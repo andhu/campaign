@@ -6,7 +6,7 @@ export default function houseReducer(state = initialState.house, action) {
 		case types.HOUSE_CREATED_SUCCESS:
 			return Object.assign({}, state, action.house);
 		case types.FETCH_HOUSE:
-			return { ...state, house: action.house};
+			return Object.assign({}, state, {house: action.house });
 		default:
 			return state;
 	}

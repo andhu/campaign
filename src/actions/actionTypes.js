@@ -14,4 +14,5 @@ export const USER_IS_ADMIN_SUCCESS = 'USER_IS_ADMIN_SUCCESS';
 
 // D2D actions
 export const HOUSE_CREATED_SUCCESS = 'HOUSE_CREATED_SUCCESS';
+export const FETCH_HOUSE = 'FETCH_HOUSE';
 
