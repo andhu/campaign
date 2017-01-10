@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 
-class Door2DoorForm extends Component {
+class HouseForm extends Component {
 	render() {
 		const { handleSubmit } = this.props;
 		return (
@@ -62,16 +62,16 @@ class Door2DoorForm extends Component {
 	}
 }
 
-Door2DoorForm.propTypes = {
+HouseForm.propTypes = {
 	handleSubmit: React.PropTypes.func.isRequired
 };
 
 /* eslint-disable no-class-assign */
 
-Door2DoorForm = reduxForm({ 
+HouseForm = reduxForm({ 
 	form: 'd2d'
-})(Door2DoorForm);
+})(HouseForm);
 
 
 
-export default Door2DoorForm;
+export default HouseForm;

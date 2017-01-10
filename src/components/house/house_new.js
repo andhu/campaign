@@ -1,8 +1,8 @@
 import React from 'react';
-import Door2DoorForm from './door2doorForm';
+import HouseForm from './house_form';
 //import {Link} from 'react-router';
 
-class Door2DoorPage extends React.Component {
+class HouseNew extends React.Component {
 	constructor(props, context) {
 		super(props, context);
 
@@ -43,10 +43,10 @@ class Door2DoorPage extends React.Component {
 		return(
 			<div>
 				D2D Page
-				<Door2DoorForm onSubmit={this.handleSubmit} />
+				<HouseForm onSubmit={this.handleSubmit} />
 			</div>
 			);
 	}
 }
 
-export default Door2DoorPage;
+export default HouseNew;
