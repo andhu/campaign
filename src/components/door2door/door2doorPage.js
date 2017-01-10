@@ -1,5 +1,6 @@
 import React from 'react';
-import {Link} from 'react-router';
+import Door2DoorForm from './door2doorForm';
+//import {Link} from 'react-router';
 
 class Door2DoorPage extends React.Component {
 	constructor(props, context) {
@@ -31,16 +32,21 @@ class Door2DoorPage extends React.Component {
 
 	}
 
+	/* eslint-disable no-console */
+
+	handleSubmit = (values) => {
+		console.log(values);
+	}
+
 	render() {
 
 		return(
-			<div>D2D Page</div>
+			<div>
+				D2D Page
+				<Door2DoorForm onSubmit={this.handleSubmit} />
+			</div>
 			);
 	}
-}
-
-function mapStateToProps(state) {
-	return { houses: state.houses.all };
 }
 
 export default Door2DoorPage;

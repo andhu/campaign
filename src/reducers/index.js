@@ -6,6 +6,7 @@ import house from './houseReducer';
 
 import ajaxCallsInProgress from './ajaxStatusReducer';
 import { routerReducer } from 'react-router-redux';
+import { reducer as formReducer } from 'redux-form';
 
 
 const rootReducer = combineReducers({
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
   user,
   auth,
   ajaxCallsInProgress,
-  house
+  house,
+  form: formReducer
 });
 
 export default rootReducer;

@@ -17,6 +17,5 @@ export default {
     initialized: false
   },
   ajaxCallsInProgress: 0,
-  houses: [],
   house: null
 };
