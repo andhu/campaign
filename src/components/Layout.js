@@ -4,20 +4,33 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {signOut} from '../actions/authActions';
 
-import {Container} from 'semantic-ui-react';
+import {Container, Sidebar, Segment, Button, Icon} from 'semantic-ui-react';
 
 class Layout extends React.Component {
 
   constructor(props, context) {
     super(props, context);
+    this.state = { visible: false};
   }
+
+  toggleVisibility = () => this.setState({ visible: !this.state.visible })
 
   render() {
     const {auth, actions, loading, user} = this.props;
+    const { visible } = this.state;
     return (
       <Container fluid>
-        <Header signOut={actions.signOut} auth={auth} loading={loading} user={user} />
-        {this.props.children}
+        <Button icon toggle active={visible} onClick={this.toggleVisibility}>
+          <Icon name="television" />
+        </Button>
+        <Sidebar.Pushable as={Segment}>
+          <Header signOut={actions.signOut} auth={auth} loading={loading} user={user} visible={visible} />
+          <Sidebar.Pusher>
+            <Segment basic>
+              {this.props.children}
+            </Segment>
+          </Sidebar.Pusher>
+        </Sidebar.Pushable>
       </Container>
     );
   }
