@@ -26,10 +26,7 @@ function extractHouseProperties(firebaseHouse) {
 }
 
 export function saveHouse(house) {
-	return {
-		type: types.SAVE_HOUSE,
-		payload: house
-	};
+	console.log("house is: ", house);
 }
 
 

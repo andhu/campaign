@@ -9,7 +9,7 @@ import LoginPage from './components/login/LoginPage'; //eslint-disable-line impo
 import RegistrationPage from './components/registration/RegistrationPage'; //eslint-disable-line import/no-named-as-default
 import {requireAdmin} from './actions/authActions';
 
-import Door2DoorPage from './components/door2door/door2doorPage';
+import HousePage from './components/house/house_new';
 
 
 export default function Routes(store) {
@@ -22,13 +22,12 @@ export default function Routes(store) {
   return (
     <Route path="/" component={Layout}>
       <IndexRoute component={HomePage}/>
-      <Route path="layout" component={Layout}/>
       <Route path="about" component={AboutPage}/>
       <Route path="protected" component={ProtectedPage}/>
       <Route path="admin" component={AdminPage} onEnter={checkAdmin}/>
       <Route path="register" component={RegistrationPage}/>
       <Route path="login" component={LoginPage}/>
-      <Route path="d2d" component={Door2DoorPage}/>
+      <Route path="d2d" component={HousePage}/>
     </Route>
   );
 }
