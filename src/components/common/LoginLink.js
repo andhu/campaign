@@ -5,6 +5,7 @@ const LoginLink = () => {
   return (
     <li>
     	<Link to="/register" activeClassName="active">Sign up</Link>
+    	{ " | | " }
       <Link to="/login" activeClassName="active">Login</Link>
     </li>
   );

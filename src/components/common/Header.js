@@ -31,7 +31,8 @@ const Header = ({loading, signOut, auth, user}) => {
             <li><Link to="/protected" activeClassName="active">Protected</Link></li>
           </ul>
           <ul className="nav navbar-nav navbar-right">
-            Hi {displayName} {loginLogoutLink}
+            <li>Hi {displayName}</li>
+             {loginLogoutLink}
           </ul>
         </div>
       </div>
