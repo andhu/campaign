@@ -54,12 +54,13 @@ class FirebaseApi {
   }
 
   static GetChildAddedByKeyOnce(path, key) {
-    return firebase
+    let user = firebase
       .database()
       .ref(path)
       .orderByKey()
       .equalTo(key)
       .once('child_added');
+    return user;
   }
 
   static databaseSet(path, value) {
