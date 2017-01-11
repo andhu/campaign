@@ -62,6 +62,7 @@ export function authLoggedIn(userUID) {
       .then(
         user => {
           dispatch(userLoadedSuccess(user.val()));
+          // @TODO go to houselist
           dispatch(push('/'));
         })
       .catch(

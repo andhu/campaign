@@ -9,7 +9,7 @@ import LoginPage from './components/login/LoginPage'; //eslint-disable-line impo
 import RegistrationPage from './components/registration/RegistrationPage'; //eslint-disable-line import/no-named-as-default
 import {requireAdmin} from './actions/authActions';
 
-import HousePage from './components/house/house_new';
+import HousePage from './components/house/HousePage';
 
 
 export default function Routes(store) {
