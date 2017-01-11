@@ -1,42 +1,26 @@
 import React, {PropTypes} from 'react';
-import {Link, IndexLink} from 'react-router';
 import LoadingDots from './LoadingDots';
 import LoginLink from './LoginLink';
 import LogoutLink from './LogoutLink';
 import AdminLink from './AdminLink';
+import NavLink from './NavLink';
+
+import { Menu } from 'semantic-ui-react';
 
 const Header = ({loading, signOut, auth, user}) => {
-
+  // TODO: implement a loading progressbar below the menu
   let loginLogoutLink = auth.isLogged ? <LogoutLink signOut={signOut} /> : <LoginLink />;
-  let adminLink = user.isAdmin ? <AdminLink /> : null;
-  let displayName = user.displayName ? user.displayName : "Guest";
-
+  let displayName = user.email ? <NavLink>{user.email}</NavLink> : <NavLink>Guest</NavLink>; 
   return (
-    <nav className="navbar">
-      <div className="container-fluid">
-        <div className="navbar-header">
-          <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu">
-              <span className="sr-only">Toggle navigation </span>
-              <span className="icon-bar"></span>
-              <span className="icon-bar"></span>
-              <span className="icon-bar"></span>
-          </button>
-          <a className="navbar-brand" href="#">Election</a>
-        </div>
-        <div className="collapse navbar-collapse" id="menu">
-          <ul className="nav navbar-nav">
-            <li><IndexLink to="/" activeClassName="active">Home</IndexLink></li>
-            <li><Link to="/d2d" activeClassName="active">Door 2 Door</Link></li>
-            <li><Link to="/about" activeClassName="active">About</Link></li>
-            <li><Link to="/protected" activeClassName="active">Protected</Link></li>
-          </ul>
-          <ul className="nav navbar-nav navbar-right">
-            <li>Hi {displayName}</li>
-             {loginLogoutLink}
-          </ul>
-        </div>
-      </div>
-    </nav>
+      <Menu inverted stackable>
+        <NavLink to="/">Home</NavLink>
+        <NavLink to="/d2d">D2D</NavLink>
+        <NavLink to="/about">About</NavLink>
+        <Menu.Menu position="right">
+          {displayName}
+          {loginLogoutLink}
+        </Menu.Menu>
+      </Menu>
   );
 };
 

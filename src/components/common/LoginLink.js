@@ -1,14 +1,8 @@
 import React from 'react';
-import {Link} from 'react-router';
+import NavLink from './NavLink';
 
 const LoginLink = () => {
-  return (
-    <li>
-    	<Link to="/register" activeClassName="active">Sign up</Link>
-    	{ " | | " }
-      <Link to="/login" activeClassName="active">Login</Link>
-    </li>
-  );
+  return <NavLink to="/login">Login</NavLink>;
 };
 
 export default LoginLink;

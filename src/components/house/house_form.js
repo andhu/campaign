@@ -41,7 +41,6 @@ const validate = values => {
 };
 
 let HouseForm = ({ handleSubmit, invalid, submitting }) =>
-	<div>
 		<form onSubmit={handleSubmit(saveHouse)}>
 			<div className="form-group">
 				<Field name="houseName" placeholder="House Name" component={renderInput} />
@@ -89,8 +88,7 @@ let HouseForm = ({ handleSubmit, invalid, submitting }) =>
 			
 			<button className="btn btn-success" type="submit" disabled={invalid || submitting}>Submit</button>
 			</div>
-		</form>
-	</div>;
+		</form>;
 
 HouseForm.propTypes = {
 	handleSubmit: PropTypes.func.isRequired,
@@ -100,7 +98,7 @@ HouseForm.propTypes = {
 /* eslint-disable no-class-assign */
 
 HouseForm = reduxForm({ 
-	form: 'd2d',
+	form: "d2d",
 	destroyOnUnmount: false,
 	validate
 })(HouseForm);

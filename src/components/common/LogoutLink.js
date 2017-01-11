@@ -1,7 +1,8 @@
 import React from 'react';
+import NavLink from './NavLink';
 
 const LogoutLink = ({signOut}) => {
-  return <a href="#" onClick={signOut}>Logout</a>;
+	return <NavLink onClick={signOut}>Logout</NavLink>;
 };
 
 LogoutLink.propTypes = {

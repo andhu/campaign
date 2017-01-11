@@ -1,6 +1,6 @@
 import React from 'react';
 import HouseForm from './house_form';
-//import {Link} from 'react-router';
+import checkAuth from '../requireAuth';
 
 class HouseNew extends React.Component {
 	render() {
@@ -14,4 +14,4 @@ class HouseNew extends React.Component {
 	}
 }
 
-export default HouseNew;
+export default checkAuth(HouseNew);

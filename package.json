@@ -71,6 +71,8 @@
     "redux": "^3.5.2",
     "redux-form": "^6.4.3",
     "redux-thunk": "^2.1.0",
+    "sane-email-validation": "^1.1.0",
+    "semantic-ui-css": "^2.2.4",
     "semantic-ui-react": "^0.63.5",
     "toastr": "^2.1.2"
   }

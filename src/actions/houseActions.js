@@ -27,6 +27,9 @@ function extractHouseProperties(firebaseHouse) {
 
 export function saveHouse(house) {
 	console.log("house is: ", house);
+	return (dispatch) => {
+		console.log("saving house");
+	};
 }
 
 
