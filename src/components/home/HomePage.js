@@ -1,15 +1,16 @@
 import React from 'react';
-import {Segment, Header} from 'semantic-ui-react';
+import {Segment, Header, Statistic} from 'semantic-ui-react';
 
 const HomePage = () => {
+  const items = [
+    {label: "Total Houses", value: "22"},
+    {label: "Members", value: "6"}
+  ];
   return (
     <Segment>
 			<Header as="h1">Campaign</Header>
-				<p>This is a project to make your life easier</p>
-      <div>
-				<h4>Houses Covered</h4>
-				<p><span className="small">29</span></p>
-      </div>
+			<p>This is a project to make your life easier</p>
+      <Statistic.Group items={items} color="blue" />
     </Segment>
   );
 };

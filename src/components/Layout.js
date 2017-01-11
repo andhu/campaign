@@ -4,6 +4,8 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {signOut} from '../actions/authActions';
 
+import {Container} from 'semantic-ui-react';
+
 class Layout extends React.Component {
 
   constructor(props, context) {
@@ -13,10 +15,10 @@ class Layout extends React.Component {
   render() {
     const {auth, actions, loading, user} = this.props;
     return (
-      <div>
+      <Container fluid>
         <Header signOut={actions.signOut} auth={auth} loading={loading} user={user} />
         {this.props.children}
-      </div>
+      </Container>
     );
   }
 }
@@ -29,7 +31,7 @@ Layout.propTypes =  {
   loading: React.PropTypes.bool.isRequired
 };
 
-function mapStateToProps(state, ownProps) {
+function mapStateToProps(state) {
   return {
     auth: state.auth,
     user: state.user,
