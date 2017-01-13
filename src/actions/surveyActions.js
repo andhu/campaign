@@ -25,6 +25,10 @@ function extractHouseProperties(firebaseHouse) {
 	return house;
 }
 
+export function loadFormData(data) {
+	return { type: types.LOAD_FORM, data };
+}
+
 export function saveHouse(house) {
 	console.log("house is: ", house);
 	return (dispatch) => {

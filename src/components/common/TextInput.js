@@ -1,35 +1,20 @@
 import React, {PropTypes} from 'react';
+import {Form, Input} from 'semantic-ui-react';
 
-const TextInput = ({name, label, onChange, placeholder, value, error}) => {
-  let wrapperClass = 'form-group';
-  if (error && error.length > 0) {
-    wrapperClass += " " + 'has-error';
-  }
-
-  return (
-    <div className={wrapperClass}>
-      <label htmlFor={name}>{label}</label>
-      <div className="field">
-        <input
-          type="text"
-          name={name}
-          className="form-control"
-          placeholder={placeholder}
-          value={value}
-          onChange={onChange}/>
-        {error && <div className="alert alert-danger">{error}</div>}
-      </div>
-    </div>
+const TextInput = ({input, placeholder, type, meta, label}) => {
+  
+  return(
+  <Form.Field error={meta.error && meta.touched}>
+    <Input {...input} label={label} type={type} placeholder={placeholder}  />
+  </Form.Field>
   );
 };
 
 TextInput.propTypes = {
-  name: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-  placeholder: PropTypes.string,
-  value: PropTypes.string,
-  error: PropTypes.string
+  input: PropTypes.object.isRequired,
+  placeholder: PropTypes.string.isRequired,
+  type: PropTypes.string,
+  meta: PropTypes.object.isRequired
 };
-
+  
 export default TextInput;

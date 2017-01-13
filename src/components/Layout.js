@@ -20,7 +20,7 @@ class Layout extends React.Component {
     const { visible } = this.state;
     return (
       <Container fluid>
-        <Button icon toggle active={visible} onClick={this.toggleVisibility}>
+        <Button basic icon toggle active={visible} onClick={this.toggleVisibility}>
           <Icon name="television" />
         </Button>
         <Sidebar.Pushable as={Segment}>

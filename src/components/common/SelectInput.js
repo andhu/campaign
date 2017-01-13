@@ -1,36 +1,38 @@
 import React, {PropTypes} from 'react';
+import {Form, Dropdown} from 'semantic-ui-react';
 
-const SelectInput = ({name, label, onChange, defaultOption, value, error, options}) => {
-  return (
-    <div className="form-group">
-      <label htmlFor={name}>{label}</label>
-      <div className="field">
-        {/* Note, value is set here rather than on the option - docs: https://facebook.github.io/react/docs/forms.html */}
-        <select
-          name={name}
-          value={value}
-          onChange={onChange}
-          className="form-control">
-          <option value="">{defaultOption}</option>
-          {options.map((option) => {
-            return <option key={option.value} value={option.value}>{option.text}</option>;
-          })
-          }
-        </select>
-        {error && <div className="alert alert-danger">{error}</div>}
-      </div>
-    </div>
+
+
+const SelectInput = ({placeholder, input, meta, options, search, selection, inline}) => {
+  const handleOnChange = (e, data) => {
+    input.onChange(data.value);
+  };
+
+  const handleOnBlur = (e, data) => {
+    input.onBlur(data.value);
+  };
+
+  return(
+  <Form.Field error={meta.error && meta.touched}>
+    <Dropdown
+      placeholder={placeholder}
+      {...input}
+      onChange={handleOnChange}
+      onBlur={handleOnBlur}
+      options={options}
+      search={search}
+      inline={inline}
+      selection={selection}
+     />
+  </Form.Field>
+    
   );
 };
 
 SelectInput.propTypes = {
-  name: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-  defaultOption: PropTypes.string,
-  value: PropTypes.string,
-  error: PropTypes.string,
-  options: PropTypes.arrayOf(PropTypes.object)
+  input: PropTypes.object.isRequired,
+  meta: PropTypes.object.isRequired,
+  onChange: PropTypes.func
 };
-
+  
 export default SelectInput;

@@ -17,5 +17,5 @@ export default {
     initialized: false
   },
   ajaxCallsInProgress: 0,
-  house: null
+  survey: {}
 };

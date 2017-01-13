@@ -2,7 +2,7 @@ import {combineReducers} from 'redux';
 import user from './userReducer';
 import routesPermissions from './routesPermissionsReducer';
 import auth from './authReducer';
-import houseReducer from './house';
+import survey from './surveyReducer';
 
 import ajaxCallsInProgress from './ajaxStatusReducer';
 import { routerReducer } from 'react-router-redux';
@@ -15,7 +15,7 @@ const rootReducer = combineReducers({
   user,
   auth,
   ajaxCallsInProgress,
-  house: houseReducer,
+  survey,
   form: formReducer
 });
 

@@ -3,7 +3,7 @@ import {Form, Button} from 'semantic-ui-react';
 
 import {Field, reduxForm} from 'redux-form';
 
-import renderInput from '../common/renderInput';
+import TextInput from '../common/TextInput';
 
 import isEmail from 'sane-email-validation';
 
@@ -23,11 +23,11 @@ const validate = values => {
 let LoginForm = ({handleSubmit, invalid, onSave, saving}) => {
   return (
     <Form onSubmit={handleSubmit(onSave)}>
-      <Field placeholder="Email" type="email" name="email" component={renderInput}/>
+      <Field placeholder="Email" type="email" name="email" component={TextInput}/>
       <Field placeholder="Password" 
         type="password" 
         name="password"  
-        component={renderInput}/>
+        component={TextInput}/>
       <Button 
         inverted color="green" 
         content="Sign In" 
@@ -38,32 +38,6 @@ let LoginForm = ({handleSubmit, invalid, onSave, saving}) => {
     </Form>
   );
 };
-
-/*
-<form>
-      <h1>Login</h1>
-      <TextInput
-        name="email"
-        label="Email"
-        onChange={onChange}
-        value={user.email}
-        />
-
-      <TextInput
-        name="password"
-        label="Password"
-        onChange={onChange}
-        value={user.password}
-        />
-
-      <input
-        type="submit"
-        disabled={saving}
-        value={saving ? 'Logining in...' : 'Login'}
-        className="btn btn-primary"
-        onClick={onSave}/>
-</form>
-*/
 
 LoginForm.propTypes = {
   handleSubmit: React.PropTypes.func.isRequired,
