@@ -3,12 +3,12 @@ import {Form, Input, Label} from 'semantic-ui-react';
 
 
 const CandidateInput = ({input, candidate, placeholder, type, meta:{error, touched}}) => (
-	<Form.Field inline error={error && touched}>
+	<Form.Field error={error && touched}>
 		<Label color={candidate.color}>
 			{candidate.name}
 			<Label.Detail>{candidate.party}</Label.Detail>
 		</Label>
-		<Input type={type} placeholder={placeholder} {...input} />
+		<Input size="mini" type={type} placeholder={placeholder} {...input} />
 	</Form.Field>
 );
 

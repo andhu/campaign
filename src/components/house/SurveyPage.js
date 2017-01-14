@@ -1,6 +1,6 @@
 import React from 'react';
 
-import HouseForm from './HouseForm';
+import SurveyForm from './SurveyForm';
 import checkAuth from '../requireAuth';
 
 //import {saveHouse} from '../../actions/houseActions';
@@ -9,7 +9,7 @@ import {Header} from 'semantic-ui-react';
 
 
 
-class HousePage extends React.Component {
+class SurveyPage extends React.Component {
 	constructor(props) {
 		super(props);
 
@@ -23,9 +23,7 @@ class HousePage extends React.Component {
 	render() {
 
 		return(
-			<div>
-				<HouseForm onSubmit={this.handleFormSubmit} />
-			</div>
+				<SurveyForm onSubmit={this.handleFormSubmit} />
 			);
 	}
 }
@@ -33,4 +31,4 @@ class HousePage extends React.Component {
 
 
 
-export default checkAuth(HousePage);
+export default checkAuth(SurveyPage);

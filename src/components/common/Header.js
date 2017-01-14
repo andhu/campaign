@@ -7,18 +7,18 @@ import NavLink from './NavLink';
 
 import { Menu, Icon, Sidebar } from 'semantic-ui-react';
 
-const Header = ({loading, signOut, auth, user, visible}) => {
+const Header = ({loading, signOut, auth, user}) => {
   // TODO: implement a loading progressbar below the menu
   let loginLogoutLink = auth.isLogged ? <LogoutLink signOut={signOut} /> : <LoginLink />;
   let displayName = user.email ? <NavLink><div><Icon name="user" />{user.email}</div></NavLink> : <NavLink><div><Icon name="user" />Guest</div></NavLink>; 
   return (
-        <Sidebar as={Menu} width="thin" animation="slide out" visible={visible} vertical inverted>
+        <Menu pointing stackable>
           {displayName}
           <NavLink to="/">Home</NavLink>
-          <NavLink to="/d2d">D2D</NavLink>
+          <NavLink to="/survey">Survey</NavLink>
           <NavLink to="/about">About</NavLink>
           {loginLogoutLink}
-        </Sidebar>
+        </Menu>
   );
 };
 

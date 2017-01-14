@@ -1,24 +1,24 @@
 import React, { PropTypes } from 'react';
 
 import {Field} from 'redux-form';
-import {List} from 'semantic-ui-react';
+import {Grid} from 'semantic-ui-react';
 
 import CandidateInput from './CandidateInput';
 
 const CandidateList = ({fields, candidates, meta: {touched, error}}) => (
-	<List size="medium">
+	<Grid.Row centered columns={2}>
 		{error && touched && <span>{error}</span>}
 		{fields.map((candidate, index) => 
-			<List.Item key={index}>
+			<Grid.Column key={index}>
 				<Field
 					name={`${candidate}.votes`}
 					candidate={candidates[index]}
 					placeholder="Votes"
 					type="number"
 					component={CandidateInput} />
-			</List.Item>
+			</Grid.Column>
 		)}
-	</List>
+	</Grid.Row>
 );
 
 CandidateList.propTypes = {

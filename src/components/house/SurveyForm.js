@@ -6,7 +6,7 @@ import TextInput from '../common/TextInput';
 import SelectInput from '../common/SelectInput';
 import DateInput from '../common/DateInput';
 import CandidateList from '../candidate/CandidateList';
-import {Form, Button, Dropdown, Label} from 'semantic-ui-react';
+import {Form, Button, Dropdown, Label, Grid, Container} from 'semantic-ui-react';
 
 import {HouseList, FloorList} from '../common/HouseList';
 import {loadFormData} from '../../actions/surveyActions';
@@ -35,6 +35,21 @@ const survey = {
 				name: "Imma Bro",
 				party: "COK",
 				color: "blue"
+			},
+			{
+				name: "Ciman Tay",
+				party: "AGL",
+				color: "purple"
+			},
+			{
+				name: "Burma Stone Sim",
+				party: "JPM",
+				color: "red"
+			},
+			{
+				name: "Sand King",
+				party: "Dota",
+				color: "brown"
 			}
 		]
 };
@@ -66,7 +81,7 @@ const FloorInput = ({placeholder, input, meta, options, search, selection, inlin
   );
 };
 
-class HouseForm extends Component {
+class SurveyForm extends Component {
 	componentWillReceiveProps() {
 		this.props.loadFormData(survey);
 	}
@@ -74,46 +89,67 @@ class HouseForm extends Component {
 	render() {
 			const { handleSubmit, onSubmit, invalid, pristine, reset, candidates} = this.props;
 		return(
-			<Form onSubmit={handleSubmit(onSubmit)}>
-				<Form.Group inline>
-					<Field name="houseName" 
+			<Container>
+			<Form as={Grid} centered columns={3} onSubmit={handleSubmit(onSubmit)}>
+				<Grid.Row>
+					<Grid.Column>
+							<Field name="houseName" 
 						placeholder="Select a House" 
 						component={SelectInput}
 						options={HouseList}
 						search
 						selection />
-
-					<Field name="floor" 
+					</Grid.Column>	
+					<Grid.Column>
+						<Field name="floor" 
 						placeholder="Floor"
 						component={FloorInput} 
 						options={FloorList} />
-				</Form.Group>
-				<Form.Group width="equal">
-					<Field name="date"
+					</Grid.Column>
+				</Grid.Row>
+
+				<Grid.Row>
+					<Grid.Column>
+						<Field name="date"
 						placeholder="Date"
 						component={DateInput} />
-
-					<Field name="total" label="Total" placeholder="No. of Poeople" component={TextInput} type="number" />
-				</Form.Group>
+					</Grid.Column>
+					<Grid.Column>
+						<Field name="total" label="Total" 
+						placeholder="No. of Poeople" 
+						component={TextInput} 
+						type="number" />
+					</Grid.Column>
+				</Grid.Row>
 
 				<FieldArray name="candidates" component={CandidateList} candidates={candidates} />
-				<Form.Group>
-					<Field name="agentName" label="Agent" component={TextInput} placeholder="Name" />
-					<Field name="contact" label="Contact" component={TextInput} placeholder="Number"/>
-				</Form.Group>
+
+				<Grid.Row>
+					<Grid.Column>
+						<Field name="agentName" label="Agent" component={TextInput} placeholder="Name" />
+					</Grid.Column>
+					<Grid.Column>
+						<Field name="contact" label="Contact" component={TextInput} placeholder="Number"/>
+					</Grid.Column>
+				</Grid.Row>
 				
-				<Button.Group>
-					<Button negative disabled={pristine} onClick={reset}>Reset</Button>
-					<Button.Or />
-					<Button disabled={invalid} type="submit" positive>Submit</Button>
-				</Button.Group>
+				<Grid.Row>
+					<Grid.Column>
+						<Button.Group>
+							<Button negative disabled={pristine} onClick={reset}>Reset</Button>
+							<Button.Or />
+							<Button disabled={invalid} type="submit" positive>Submit</Button>
+						</Button.Group>
+					</Grid.Column>
+				</Grid.Row>
 			</Form>
+			</Container>
 		);
 	}
 }
 		
 
-HouseForm.propTypes = {
+SurveyForm.propTypes = {
 	handleSubmit: PropTypes.func.isRequired,
 	invalid : PropTypes.bool.isRequired,
 	pristine : PropTypes.bool.isRequired,
@@ -133,13 +169,13 @@ function mapStateToProps(state) {
 	};
 }
 
-HouseForm = reduxForm({ 
+SurveyForm = reduxForm({ 
 	form: "d2d",
 	destroyOnUnmount: false,
 	validate
-})(HouseForm);
+})(SurveyForm);
 
 const selector = formValueSelector('d2d'); // <-- same as form name
-HouseForm = connect(mapStateToProps, {loadFormData})(HouseForm);
+SurveyForm = connect(mapStateToProps, {loadFormData})(SurveyForm);
 
-export default HouseForm;
+export default SurveyForm;

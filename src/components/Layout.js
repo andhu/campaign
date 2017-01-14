@@ -19,19 +19,18 @@ class Layout extends React.Component {
     const {auth, actions, loading, user} = this.props;
     const { visible } = this.state;
     return (
-      <Container fluid>
-        <Button basic icon toggle active={visible} onClick={this.toggleVisibility}>
-          <Icon name="television" />
-        </Button>
-        <Sidebar.Pushable as={Segment}>
-          <Header signOut={actions.signOut} auth={auth} loading={loading} user={user} visible={visible} />
-          <Sidebar.Pusher>
-            <Segment basic>
+        <div>
+          <Header signOut={actions.signOut} 
+            auth={auth} 
+            loading={loading} 
+            user={user} 
+            visible={visible} />
+
+            <Segment vertical> 
               {this.props.children}
             </Segment>
-          </Sidebar.Pusher>
-        </Sidebar.Pushable>
-      </Container>
+            
+        </div>
     );
   }
 }

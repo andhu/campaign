@@ -5,12 +5,12 @@ import auth from './authReducer';
 import survey from './surveyReducer';
 
 import ajaxCallsInProgress from './ajaxStatusReducer';
-import { routerReducer } from 'react-router-redux';
+import { routerReducer as routing } from 'react-router-redux';
 import { reducer as formReducer } from 'redux-form';
 
 
 const rootReducer = combineReducers({
-  routing: routerReducer,
+  routing,
   routesPermissions,
   user,
   auth,

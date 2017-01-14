@@ -9,7 +9,7 @@ import LoginPage from './components/login/LoginPage'; //eslint-disable-line impo
 import RegistrationPage from './components/registration/RegistrationPage'; //eslint-disable-line import/no-named-as-default
 import {requireAdmin} from './actions/authActions';
 
-import HousePage from './components/house/HousePage';
+import SurveyPage from './components/house/SurveyPage';
 
 
 export default function Routes(store) {
@@ -27,7 +27,7 @@ export default function Routes(store) {
       <Route path="admin" component={AdminPage} onEnter={checkAdmin}/>
       <Route path="register" component={RegistrationPage}/>
       <Route path="login" component={LoginPage}/>
-      <Route path="d2d" component={HousePage}/>
+      <Route path="survey" component={SurveyPage}/>
     </Route>
   );
 }
