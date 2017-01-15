@@ -3,9 +3,9 @@ import React from 'react';
 import SurveyForm from './SurveyForm';
 import checkAuth from '../requireAuth';
 
-//import {saveHouse} from '../../actions/houseActions';
+import {Container} from 'semantic-ui-react';
 
-import {Header} from 'semantic-ui-react';
+//import {saveHouse} from '../../actions/houseActions';
 
 
 
@@ -23,7 +23,9 @@ class SurveyPage extends React.Component {
 	render() {
 
 		return(
-				<SurveyForm onSubmit={this.handleFormSubmit} />
+				<Container>
+					<SurveyForm onSubmit={this.handleFormSubmit} />
+				</Container>	
 			);
 	}
 }

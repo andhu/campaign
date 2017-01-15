@@ -9,15 +9,3 @@ export default combineReducers({
   routing: routerReducer,
   form: formReducer
 });
-
-// const rootReducer = combineReducers({
-//   routing,
-//   routesPermissions,
-//   user,
-//   auth,
-//   ajaxCallsInProgress,
-//   survey,
-//   form: formReducer
-// });
-
-// export default rootReducer;

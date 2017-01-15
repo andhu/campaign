@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {signOut} from '../actions/authActions';
 
-import {Container, Sidebar, Segment, Button, Icon} from 'semantic-ui-react';
+import {Segment, Progress} from 'semantic-ui-react';
 
 class Layout extends React.Component {
 
@@ -26,7 +26,8 @@ class Layout extends React.Component {
             user={user} 
             visible={visible} />
 
-            <Segment vertical> 
+            <Segment vertical>
+              <Progress percent={60} attached="top" color="teal" indicating/>
               {this.props.children}
             </Segment>
             

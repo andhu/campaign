@@ -3,7 +3,7 @@ import {Header, Statistic, Container} from 'semantic-ui-react';
 
 const HomePage = () => {
   const items = [
-    {label: "Total Houses", value: "22"},
+    {label: "Total Surveys", value: "22"},
     {label: "Members", value: "6"},
     {label: "Sleep Lost", value: "101 Hrs"},
     {label: "Forehead into Wall", value: "64"}

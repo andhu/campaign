@@ -7,7 +7,6 @@ This is a small project that will help with the door to door campaigns before th
 node
 npm
 
-~~i guess thats about it.~~
 
 ### Installation
 

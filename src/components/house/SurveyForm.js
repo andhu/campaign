@@ -89,8 +89,8 @@ class SurveyForm extends Component {
 	render() {
 			const { handleSubmit, onSubmit, invalid, pristine, reset, candidates} = this.props;
 		return(
-			<Container>
-			<Form as={Grid} centered columns={3} onSubmit={handleSubmit(onSubmit)}>
+			<Form onSubmit={handleSubmit(onSubmit)}>
+			<Grid centered columns={3} >
 				<Grid.Row>
 					<Grid.Column>
 							<Field name="houseName" 
@@ -142,8 +142,8 @@ class SurveyForm extends Component {
 						</Button.Group>
 					</Grid.Column>
 				</Grid.Row>
+				</Grid>
 			</Form>
-			</Container>
 		);
 	}
 }
