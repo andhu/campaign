@@ -1,7 +1,5 @@
 import React, {PropTypes} from 'react';
-
-import NavLink from './navlink';
-
+import { Link } from 'react-router';
 import { Menu, Button } from 'semantic-ui-react';
 
 const Header = ({authenticated, signOut}) => {
@@ -11,10 +9,14 @@ const Header = ({authenticated, signOut}) => {
   // let displayName = user.email ? <NavLink><div><Icon name="user" />{user.email}</div></NavLink> : <NavLink><div><Icon name="user" />Guest</div></NavLink>; 
   return (
     <Menu pointing stackable>
-      <NavLink to="/">Home</NavLink>
-      <NavLink to="/survey">Survey</NavLink>
-      <NavLink to="/about">About</NavLink>
-      {authenticated ? <NavLink onClick={signOut}>SignOut</NavLink> : null}
+      <Menu.Item as={Link} to="/" name="Home" />
+      {authenticated ? <Menu.Item as={Link} to="/candidates" name="Candidates" /> : null}
+      {authenticated ? <Menu.Item as={Link} to="/surveys" name="Surveys" /> : null}
+      <Menu.Item as={Link} to="/about" name="About" />
+      <Menu.Menu position="right">
+        {!authenticated ? <Menu.Item as={Link} to="/sign-in" name="Sign In" /> : null}
+        {authenticated ? <Button negative content="Sign Out" onClick={signOut} /> : null}
+      </Menu.Menu>
     </Menu>
   );
 };

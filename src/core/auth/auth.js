@@ -8,7 +8,6 @@ export function initAuth(dispatch) {
         if (authUser) {
           dispatch(authActions.signInSuccess(authUser));
         }
-
         resolve();
         unsubscribe();
       },

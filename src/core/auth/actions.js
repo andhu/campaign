@@ -9,8 +9,11 @@ export const authActions = {
   SIGN_OUT_FAILED: 'SIGN_OUT_FAILED',
   SIGN_OUT_SUCCESS: 'SIGN_OUT_SUCCESS',
 
-  signIn: () => ({
-    type: authActions.SIGN_IN
+  signIn: (user, resolve, reject) => ({
+    type: authActions.SIGN_IN,
+    user,
+    resolve,
+    reject
   }),
 
   signInFailed: error => ({
@@ -20,7 +23,7 @@ export const authActions = {
 
   signInSuccess: authUser => ({
     type: authActions.SIGN_IN_SUCCESS,
-    payload: { authUser }
+    payload: authUser
   }),
 
   signOut: () => ({
