@@ -12,10 +12,11 @@ class CandidateForm extends Component {
     super(...arguments);
 
     this.submit = ::this.submit;
+
   }
 
   submit(candidate, dispatch) {
-    console.log(candidate);
+    console.log(candidate, dispatch);
     // return new Promise((resolve, reject) => {
     //   dispatch(authActions.signIn(candidate, resolve, reject));
     // }).catch(error => {
@@ -24,7 +25,7 @@ class CandidateForm extends Component {
   }
 
   render() {
-    const { handleSubmit, invalid, error, submitting } = this.props;
+    const { handleSubmit, invalid, error, submitting, createCandidate } = this.props;
     return (
       <form onSubmit={handleSubmit(this.submit)}>
         {error && <div>{error}</div>}

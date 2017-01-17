@@ -30,6 +30,8 @@
     "react-router-redux": "~4.0.6",
     "redux": "~3.6.0",
     "redux-form": "^6.4.3",
+    "redux-form-saga": "0.0.8",
+    "redux-form-submit-saga": "^1.1.2",
     "redux-saga": "~0.11.1",
     "reselect": "~2.5.4",
     "sane-email-validation": "^1.1.0",

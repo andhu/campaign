@@ -1,8 +1,9 @@
 import { authSagas } from './auth';
-// import { surveySagas } from './survey';
+import { candidateSagas } from './candidates';
 
 export default function* sagas() {
   yield [
-    ...authSagas
+    ...authSagas,
+    ...candidateSagas
   ];
-};
+}
