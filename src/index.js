@@ -1,15 +1,17 @@
-// modules
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 
 import {AppContainer} from 'react-hot-loader';
-// import {Provider} from 'react-redux';
 import {syncHistoryWithStore} from 'react-router-redux';
 import {browserHistory} from 'react-router';
 
 // REDUX SAGA CHANGES
 import { initAuth } from './core/auth';
 import { configureStore } from './core/store';
+
+// styles
+import './views/styles/styles.scss';
 
 import Root from './views/root';
 
