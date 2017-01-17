@@ -4,15 +4,15 @@ import { connect } from 'react-redux';
 import CandidateForm from 'views/components/candidate-form';
 import { candidateActions, getVisibleCandidates } from 'core/candidates';
 
-const CandidatePage = ({createCandidate}) => {
+const CandidatePage = () => {
   return (
-    <div><CandidateForm onSubmit={createCandidate} /></div>
+    <div><CandidateForm /></div>
   );
 };
 
 CandidatePage.propTypes = {
   candidates: PropTypes.instanceOf(List),
-  createCandidate: PropTypes.func.isRequired,
+  //createCandidate: PropTypes.func.isRequired,
   filterCandidates: PropTypes.func.isRequired,
   location: PropTypes.object.isRequired,
   removeCandidate: PropTypes.func.isRequired,
@@ -27,7 +27,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  createCandidate: candidateActions.createCandidate,
+  //createCandidate: candidateActions.createCandidate,
   filterCandidates: candidateActions.filterCandidates,
   removeCandidate: candidateActions.removeCandidate,
   updateCandidate: candidateActions.updateCandidate

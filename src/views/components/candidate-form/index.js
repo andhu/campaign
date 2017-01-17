@@ -1,67 +1,48 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import {Button} from 'semantic-ui-react';
 
-import {Field, reduxForm, SubmissionError } from 'redux-form';
+import {Field, reduxForm } from 'redux-form';
 import TextInput from 'views/components/textinput';
-import { authActions } from 'core/auth';
+import { candidateActions } from 'core/candidates';
 
 import validate from './validate';
 
-class CandidateForm extends Component {
-  constructor() {
-    super(...arguments);
+const CandidateForm = ({ handleSubmit, invalid, error, submitting }) => {
+  return (
+    <form onSubmit={handleSubmit(candidateActions.handleCreateCandidate())}>
+      {error && <div>{error}</div>}
+      {submitting && <div>Saving Candidate...</div>}
+      <Field
+        placeholder="Name"
+        type="text"
+        name="name"
+        component={TextInput}
+      />
 
-    this.submit = ::this.submit;
+      <Field
+        placeholder="Party"
+        type="text"
+        name="party"
+        component={TextInput}
+      />
 
-  }
+      <Field
+        placeholder="Color"
+        type="text"
+        name="color"
+        component={TextInput}
+      />
 
-  submit(candidate, dispatch) {
-    console.log(candidate, dispatch);
-    // return new Promise((resolve, reject) => {
-    //   dispatch(authActions.signIn(candidate, resolve, reject));
-    // }).catch(error => {
-    //   throw new SubmissionError(error);
-    // });
-  }
-
-  render() {
-    const { handleSubmit, invalid, error, submitting, createCandidate } = this.props;
-    return (
-      <form onSubmit={handleSubmit(this.submit)}>
-        {error && <div>{error}</div>}
-        {submitting && <div>Saving Candidate...</div>}
-        <Field
-          placeholder="Name"
-          type="text"
-          name="name"
-          component={TextInput}
-        />
-
-        <Field
-          placeholder="Party"
-          type="text"
-          name="party"
-          component={TextInput}
-        />
-
-        <Field
-          placeholder="Color"
-          type="text"
-          name="color"
-          component={TextInput}
-        />
-
-        <Button
-          inverted color="green"
-          content="Sign In"
-          icon="sign in"
-          labelPosition="left"
-          disabled={invalid || submitting}
-        />
-      </form>
-    );
-  }
-}
+      <Button
+        inverted color="green"
+        content="Create"
+        icon="save"
+        labelPosition="left"
+        disabled={invalid || submitting}
+      />
+    </form>
+  );
+};
 
 CandidateForm.propTypes = {
   error: PropTypes.string,

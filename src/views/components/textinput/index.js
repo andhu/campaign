@@ -5,14 +5,8 @@ const TextInput = ({input, meta: { touched, error }, ...props }) => {
   const hasError = touched && error !== undefined;
   return (
     <div>
-      {hasError &&
-        <Message
-          error
-          header="Error"
-          content={error}
-        />}
-
       <Input error={hasError} {...input} {...props} />
+      {hasError && <span>{error}</span>}
     </div>
   );
 };

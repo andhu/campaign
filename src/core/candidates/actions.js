@@ -1,7 +1,9 @@
+import { onSubmitActions } from 'redux-form-submit-saga';
+
 export const candidateActions = {
   CREATE_CANDIDATE: 'CREATE_CANDIDATE',
-  CREATE_CANDIDATE_FAILED: 'CREATE_CANDIDATE_FAILED',
   CREATE_CANDIDATE_SUCCESS: 'CREATE_CANDIDATE_SUCCESS',
+  CREATE_CANDIDATE_FAILED: 'CREATE_CANDIDATE_FAILED',
 
   REMOVE_CANDIDATE: 'REMOVE_CANDIDATE',
   REMOVE_CANDIDATE_FAILED: 'REMOVE_CANDIDATE_FAILED',
@@ -13,6 +15,12 @@ export const candidateActions = {
 
   FILTER_CANDIDATES: 'FILTER_CANDIDATES',
   LOAD_CANDIDATES_SUCCESS: 'LOAD_CANDIDATES_SUCCESS',
+
+  handleCreateCandidate: () => onSubmitActions(
+    candidateActions.createCandidate,
+    candidateActions.CREATE_CANDIDATE_SUCCESS,
+    candidateActions.CREATE_CANDIDATE_FAILED,
+  ),
 
   createCandidate: candidate => ({
     type: candidateActions.CREATE_CANDIDATE,

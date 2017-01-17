@@ -3,7 +3,7 @@ import { candidateActions } from './actions';
 import { Candidate } from './candidate';
 
 export const candidateList = new FirebaseList({
-  onAdd: candidateActions.createCandiateSuccess,
+  onAdd: candidateActions.createCandidateSuccess,
   onChange: candidateActions.updateCandidateSuccess,
   onLoad: candidateActions.loadCandidatesSuccess,
   onRemove: candidateActions.removeCandidateSuccess

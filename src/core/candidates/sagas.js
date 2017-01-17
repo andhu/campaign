@@ -36,7 +36,6 @@ const updateCandidate = write.bind(null, candidateList, candidateList.update, ca
 function* watchAuthentication() {
   while (true) {
     let { payload } = yield take(authActions.SIGN_IN_SUCCESS);
-
     candidateList.path = `candidates/${payload.authUser.uid}`;
     const job = yield fork(read);
 
@@ -78,7 +77,7 @@ function* watchUpdateCandidate() {
 
 // Candidate Sagas
 
-export const CandidateSagas = [
+export const candidateSagas = [
   fork(watchAuthentication),
   fork(watchCreateCandidate),
   fork(watchLocationChange),

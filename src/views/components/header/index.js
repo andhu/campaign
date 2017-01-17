@@ -8,7 +8,7 @@ const Header = ({authenticated, signOut}) => {
   // let loginLogoutLink = auth.isLogged ? <LogoutLink signOut={signOut} /> : <LoginLink />;
   // let displayName = user.email ? <NavLink><div><Icon name="user" />{user.email}</div></NavLink> : <NavLink><div><Icon name="user" />Guest</div></NavLink>; 
   return (
-    <Menu pointing stackable>
+    <Menu pointing>
       <Menu.Item as={Link} to="/" name="Home" />
       {authenticated ? <Menu.Item as={Link} to="/candidates" name="Candidates" /> : null}
       {authenticated ? <Menu.Item as={Link} to="/surveys" name="Surveys" /> : null}
