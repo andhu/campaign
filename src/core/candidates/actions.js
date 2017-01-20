@@ -54,7 +54,7 @@ export const candidateActions = {
 
   updateCandidate: (candidate, changes) => ({
     type: candidateActions.UPDATE_CANDIDATE,
-    payload: {candidate, changes}
+    payload: { candidate, changes }
   }),
 
   updateCandidateFailed: error => ({
@@ -64,7 +64,7 @@ export const candidateActions = {
 
   updateCandidateSuccess: candidate => ({
     type: candidateActions.UPDATE_CANDIDATE_SUCCESS,
-    payload: candidate
+    payload: { candidate }
   }),
 
   filterCandidates: filterType => ({

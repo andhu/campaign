@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
+import { Button, Input } from 'semantic-ui-react';
 
-import { Button } from 'semantic-ui-react';
+import CandidateForm from 'views/components/candidate-form';
 
 class CandidateItem extends Component {
   constructor() {
@@ -10,6 +11,7 @@ class CandidateItem extends Component {
     this.edit = ::this.edit;
     this.stopEditing = ::this.stopEditing;
     this.remove = ::this.remove;
+    this.save = :: this.save;
   }
 
   edit() {
@@ -24,14 +26,37 @@ class CandidateItem extends Component {
     this.props.removeCandidate(this.props.candidate);
   }
 
+  save(formData) {
+    if (this.state.editing) {
+      const { candidate } = this.props;
+      // console.log('data: ', formData, 'candidate: ', candidate);
+      this.props.updateCandidate(candidate, formData);
+      this.stopEditing();
+    }
+  }
+
+  renderCandidateInput(candidate) {
+    return (
+      <div>
+        <CandidateForm
+          submitAction={this.save}
+          submitButtonText="Update"
+          initialValues={candidate.toJS()}
+          form={`candidate-update${candidate.key}`}
+        />
+        <Button content="Clear" onClick={this.stopEditing} />
+      </div>
+    );
+  }
+
   renderCandidate(candidate) {
     return (
       <div>
-        <div>
-          Name: {candidate.name}
-          <span>Party: {candidate.party}</span>
-          <span>Color: {candidate.color}</span>
-        </div>
+        <span>Name: {candidate.name}</span>
+        <span>Party: {candidate.party}</span>
+        <span>Color: {candidate.color}</span>
+        <Button positive icon="pencil" onClick={this.edit} />
+        <Button negative icon="remove" onClick={this.remove} />
       </div>
     );
   }
@@ -42,12 +67,10 @@ class CandidateItem extends Component {
 
     return (
       <div>
-        {this.renderCandidate(candidate)}
-        { !editing ?
-          <Button content="Edit" onClick={this.edit} /> :
-          <Button content="Clear"onClick={this.stopEditing} />
+        {editing ?
+          this.renderCandidateInput(candidate) :
+          this.renderCandidate(candidate)
         }
-        <Button content="Remove" onClick={this.remove} />
       </div>
     );
   }

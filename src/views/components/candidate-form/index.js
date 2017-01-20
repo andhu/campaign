@@ -1,17 +1,18 @@
 import React, { PropTypes } from 'react';
-import {Button} from 'semantic-ui-react';
+import { Button } from 'semantic-ui-react';
 
-import {Field, reduxForm } from 'redux-form';
+import { connect } from 'react-redux';
+
+import { Field, reduxForm } from 'redux-form';
 import TextInput from 'views/components/textinput';
-import { candidateActions } from 'core/candidates';
 
 import validate from './validate';
 
-const CandidateForm = ({ handleSubmit, invalid, error, submitting }) => {
+const CandidateForm = ({ handleSubmit, invalid, pristine, error, submitting, submitAction, submitButtonText }) => {
   return (
-    <form onSubmit={handleSubmit(candidateActions.handleCreateCandidate())}>
+    <form onSubmit={handleSubmit(submitAction)}>
       {error && <div>{error}</div>}
-      {submitting && <div>Saving Candidate...</div>}
+      {submitting && <div>Saving...</div>}
       <Field
         placeholder="Name"
         type="text"
@@ -35,10 +36,10 @@ const CandidateForm = ({ handleSubmit, invalid, error, submitting }) => {
 
       <Button
         inverted color="green"
-        content="Create"
+        content={submitButtonText}
         icon="save"
         labelPosition="left"
-        disabled={invalid || submitting}
+        disabled={pristine || invalid || submitting}
       />
     </form>
   );
@@ -46,14 +47,25 @@ const CandidateForm = ({ handleSubmit, invalid, error, submitting }) => {
 
 CandidateForm.propTypes = {
   error: PropTypes.string,
+  form: PropTypes.string.isRequired,
   handleSubmit: PropTypes.func.isRequired,
+  initialValue: PropTypes.object,
   invalid: PropTypes.bool.isRequired,
+  pristine: PropTypes.bool.isRequired,
+  submitAction: PropTypes.func.isRequired,
+  submitButtonText: PropTypes.string.isRequired,
   submitting: PropTypes.bool.isRequired
 };
 
+// function mapStateToProps(state, ownProps) {
+//   const candidate = ownProps.candidate ? ownProps.candidate.toJS() : null;
+//   return {
+//     initialValues: candidate
+//   };
+// }
 
-export default reduxForm({
-  form: 'candidate',
-  destroyOnUnmount: false,
-  validate
-})(CandidateForm);
+
+
+export default reduxForm({validate})(CandidateForm);
+//CandidateForm = connect(mapStateToProps)(CandidateForm);
+//export default CandidateForm;

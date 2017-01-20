@@ -8,7 +8,11 @@ import { candidateActions, getVisibleCandidates } from 'core/candidates';
 const CandidatePage = ({candidates, removeCandidate, updateCandidate}) => {
   return (
     <div>
-      <CandidateForm />
+      <CandidateForm
+        submitAction={candidateActions.handleCreateCandidate()}
+        submitButtonText="Save"
+        form="candidate-add"
+      />
       <CandidateList
         candidates={candidates}
         removeCandidate={removeCandidate}
@@ -35,7 +39,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  //createCandidate: candidateActions.createCandidate,
+  //createCandidate: candidateActions.handleCreateCandidate(),
   filterCandidates: candidateActions.filterCandidates,
   removeCandidate: candidateActions.removeCandidate,
   updateCandidate: candidateActions.updateCandidate
