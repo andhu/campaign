@@ -4,6 +4,7 @@ import { routerReducer } from 'react-router-redux';
 import { reducer as formReducer } from 'redux-form';
 
 import { candidatesReducer, candidateActions } from './candidates';
+import { housesReducer } from './houses';
 
 
 export default combineReducers({
@@ -19,6 +20,7 @@ export default combineReducers({
     }
   }),
   routing: routerReducer,
-  candidates: candidatesReducer
+  candidates: candidatesReducer,
+  houses: housesReducer
 
 });

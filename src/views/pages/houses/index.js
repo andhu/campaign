@@ -2,11 +2,19 @@ import { List } from 'immutable';
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import HouseForm from 'views/components/house-form';
+import HouseList from 'views/components/house-list';
 import { houseActions, getVisibleHouses } from 'core/houses';
 
-const HousePage = () => {
+const HousePage = ({houses,removeHouse,updateHouse}) => {
   return (
-    <div><HouseForm /></div>
+    <div>
+      <HouseForm />
+      <HouseList 
+        houses = {houses}
+        removeHouse = {removeHouse}
+        updateHouse = {updateHouse}
+        />
+    </div>
   );
 };
 
