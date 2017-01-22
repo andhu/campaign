@@ -4,6 +4,7 @@ import AboutPage from './pages/about';
 import SignInPage from './pages/sign-in';
 import SurveysPage from './pages/surveys';
 import CandidatesPage from './pages/candidates';
+import StatsPage from './pages/stats';
 
 import { isAuthenticated } from 'core/auth';
 
@@ -12,7 +13,8 @@ export const paths = {
   ABOUT: '/about',
   CANDIDATES: '/candidates',
   SIGN_IN: '/sign-in',
-  SURVEYS: '/surveys'
+  SURVEYS: '/surveys',
+  STATS: '/stats'
 };
 
 const requireAuth = getState => {
@@ -59,6 +61,10 @@ export const getRoutes = getState => {
         path: paths.SURVEYS,
         component: SurveysPage,
         onEnter: requireAuth(getState)
+      },
+      {
+        path: paths.STATS,
+        component: StatsPage
       }
     ]
   };

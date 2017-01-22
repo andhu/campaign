@@ -10,9 +10,10 @@ const Header = ({authenticated, signOut}) => {
   return (
     <Menu pointing>
       <Menu.Item as={Link} to="/" name="Home" />
+      <Menu.Item as={Link} to="/stats" name="Stats" />
+      <Menu.Item as={Link} to="/about" name="About" />
       {authenticated ? <Menu.Item as={Link} to="/candidates" name="Candidates" /> : null}
       {authenticated ? <Menu.Item as={Link} to="/surveys" name="Surveys" /> : null}
-      <Menu.Item as={Link} to="/about" name="About" />
       <Menu.Menu position="right">
         {!authenticated ? <Menu.Item as={Link} to="/sign-in" name="Sign In" /> : null}
         {authenticated ? <Button negative content="Sign Out" onClick={signOut} /> : null}
