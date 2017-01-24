@@ -1,8 +1,6 @@
 import React, { PropTypes } from 'react';
 import { Button } from 'semantic-ui-react';
 
-import { connect } from 'react-redux';
-
 import { Field, reduxForm } from 'redux-form';
 import TextInput from 'views/components/textinput';
 
@@ -57,15 +55,4 @@ CandidateForm.propTypes = {
   submitting: PropTypes.bool.isRequired
 };
 
-// function mapStateToProps(state, ownProps) {
-//   const candidate = ownProps.candidate ? ownProps.candidate.toJS() : null;
-//   return {
-//     initialValues: candidate
-//   };
-// }
-
-
-
 export default reduxForm({validate})(CandidateForm);
-//CandidateForm = connect(mapStateToProps)(CandidateForm);
-//export default CandidateForm;
