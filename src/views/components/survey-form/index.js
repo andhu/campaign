@@ -8,17 +8,15 @@ import candidatesInput from 'views/components/candidates-input';
 
 import validate from './validate';
 
-const onSave = values => console.log(values);
-
 const SurveyForm = ({ handleSubmit, invalid, pristine, error, submitting, submitAction, submitButtonText }) => {
   return (
-    <form onSubmit={handleSubmit(onSave)}>
+    <form onSubmit={handleSubmit(submitAction)}>
       {error && <div>{error}</div>}
       {submitting && <div>Saving...</div>}
       <Field
         placeholder="House Name"
         type="text"
-        name="houseName"
+        name="house"
         component={TextInput}
       />
 
@@ -82,4 +80,6 @@ SurveyForm.propTypes = {
   submitting: PropTypes.bool.isRequired
 };
 
-export default reduxForm({validate})(SurveyForm);
+export default reduxForm({
+  validate
+})(SurveyForm);

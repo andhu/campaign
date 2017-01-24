@@ -17,7 +17,7 @@ export const surveyActions = {
   LOAD_SURVEYS_SUCCESS: 'LOAD_SURVEYS_SUCCESS',
 
   handleCreateSurvey: () => onSubmitActions(
-    surveyActions.createCandidate,
+    surveyActions.createSurvey,
     surveyActions.CREATE_SURVEY_SUCCESS,
     surveyActions.CREATE_SURVEY_FAILED,
   ),
@@ -68,7 +68,7 @@ export const surveyActions = {
   }),
 
   filterSurveys: filterType => ({
-    type: surveyActions.FILTER_CANDIDATES,
+    type: surveyActions.FILTER_SURVEYS,
     payload: { filterType }
   }),
 

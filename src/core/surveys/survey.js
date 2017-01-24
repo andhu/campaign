@@ -7,7 +7,7 @@ export const Survey = new Record({
   house: null,
   floor: null,
   totalVoters: null,
-  votes: null,
+  candidates: null,
   agent: null,
   contact: null
 });

@@ -69,7 +69,7 @@ function* watchRemoveSurvey() {
 
 function* watchUpdateSurvey() {
   while (true) {
-    let { payload } = yield take(surveyActions.UPDATE_CANDIDATE);
+    let { payload } = yield take(surveyActions.UPDATE_SURVEY);
     yield fork(updateSurvey, payload.survey.key, payload.changes);
   }
 }
@@ -77,7 +77,7 @@ function* watchUpdateSurvey() {
 
 // Sagas
 
-export const candidateSagas = [
+export const surveySagas = [
   fork(watchAuthentication),
   fork(watchCreateSurvey),
   fork(watchLocationChange),
