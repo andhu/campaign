@@ -23,7 +23,6 @@ export function candidatesReducer(state = new CandidatesState(), { payload, type
       }));
 
     case candidateActions.UPDATE_CANDIDATE_SUCCESS:
-      console.log(payload);
       return state.set('list', state.list.map(candidate => {
         return candidate.key === payload.candidate.key ? payload.candidate : candidate;
       }));

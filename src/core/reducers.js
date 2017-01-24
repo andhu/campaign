@@ -4,7 +4,7 @@ import { routerReducer } from 'react-router-redux';
 import { reducer as formReducer } from 'redux-form';
 
 import { candidatesReducer, candidateActions } from './candidates';
-import { housesReducer } from './houses';
+import { surveysReducer, surveyActions } from './surveys';
 
 
 export default combineReducers({
@@ -17,10 +17,18 @@ export default combineReducers({
         default:
           return state;
       }
+    },
+    'survey-add': (state, action) => {
+      switch (action.type) {
+        case surveyActions.CREATE_SURVEY_SUCCESS:
+          return undefined;
+        default:
+          return state;
+      }
     }
   }),
   routing: routerReducer,
   candidates: candidatesReducer,
-  houses: housesReducer
+  surveys: surveysReducer
 
 });
