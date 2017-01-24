@@ -53,8 +53,7 @@ class HouseItem extends Component {
     return (
       <div>
         <span>Name: {house.name}</span>
-        <span>Party: {house.party}</span>
-        <span>Color: {house.color}</span>
+        <span>Party: {house.district}</span>
         <Button positive icon="pencil" onClick={this.edit} />
         <Button negative icon="remove" onClick={this.remove} />
       </div>

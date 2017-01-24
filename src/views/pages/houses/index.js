@@ -8,7 +8,11 @@ import { houseActions, getVisibleHouses } from 'core/houses';
 const HousePage = ({houses,removeHouse,updateHouse}) => {
   return (
     <div>
-      <HouseForm />
+      <HouseForm 
+        submitAction={houseActions.handleCreateHouse()}
+        submitButtonText="Save"
+        form="house-add"
+        />
       <HouseList 
         houses = {houses}
         removeHouse = {removeHouse}
@@ -21,7 +25,7 @@ const HousePage = ({houses,removeHouse,updateHouse}) => {
 HousePage.propTypes = {
   houses: PropTypes.instanceOf(List),
   //createHouse: PropTypes.func.isRequired,
-  filterHouses: PropTypes.func.isRequired,
+  // filterHouses: PropTypes.func.isRequired,
   location: PropTypes.object.isRequired,
   removeHouse: PropTypes.func.isRequired,
   updateHouse: PropTypes.func.isRequired

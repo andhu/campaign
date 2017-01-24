@@ -13,6 +13,7 @@ const Header = ({authenticated, signOut}) => {
       <Menu.Item as={Link} to="/stats" name="Stats" />
       <Menu.Item as={Link} to="/about" name="About" />
       {authenticated ? <Menu.Item as={Link} to="/candidates" name="Candidates" /> : null}
+       {authenticated ? <Menu.Item as={Link} to="/houses" name="Houses" /> : null}
       {authenticated ? <Menu.Item as={Link} to="/surveys" name="Surveys" /> : null}
       <Menu.Menu position="right">
         {!authenticated ? <Menu.Item as={Link} to="/sign-in" name="Sign In" /> : null}

@@ -5,6 +5,7 @@ import { reducer as formReducer } from 'redux-form';
 
 import { candidatesReducer, candidateActions } from './candidates';
 import { surveysReducer, surveyActions } from './surveys';
+import { housesReducer, houseActions } from './houses';
 
 
 export default combineReducers({
@@ -25,10 +26,19 @@ export default combineReducers({
         default:
           return state;
       }
+    },
+    'house-add': (state, action) => {
+      switch (action.type) {
+        case houseActions.CREATE_HOUSE_SUCCESS:
+          return undefined;
+        default:
+          return state;
+      }
     }
   }),
   routing: routerReducer,
   candidates: candidatesReducer,
-  surveys: surveysReducer
+  surveys: surveysReducer,
+  houses: housesReducer
 
 });

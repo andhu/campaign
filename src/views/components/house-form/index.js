@@ -7,9 +7,9 @@ import { houseActions } from 'core/houses';
 
 import validate from './validate';
 
-const HouseForm = ({ handleSubmit, invalid, error, submitting }) => {
+const HouseForm = ({ handleSubmit, invalid, pristine, error, submitting, submitAction, submitButtonText }) => {
   return (
-    <form onSubmit={handleSubmit(houseActions.handleCreateHouse())}>
+    <form onSubmit={handleSubmit(submitAction)}>
       {error && <div>{error}</div>}
       {submitting && <div>Saving House...</div>}
       <Field
@@ -28,10 +28,10 @@ const HouseForm = ({ handleSubmit, invalid, error, submitting }) => {
 
       <Button
         inverted color="green"
-        content="Create"
+        content={submitButtonText}
         icon="save"
         labelPosition="left"
-        disabled={invalid || submitting}
+        disabled={pristine || invalid || submitting}
       />
     </form>
   );
@@ -39,14 +39,15 @@ const HouseForm = ({ handleSubmit, invalid, error, submitting }) => {
 
 HouseForm.propTypes = {
   error: PropTypes.string,
+  form: PropTypes.string.isRequired,
   handleSubmit: PropTypes.func.isRequired,
+  initialValue: PropTypes.object,
   invalid: PropTypes.bool.isRequired,
+  pristine: PropTypes.bool.isRequired,
+  submitAction: PropTypes.func.isRequired,
+  submitButtonText: PropTypes.string.isRequired,
   submitting: PropTypes.bool.isRequired
 };
 
 
-export default reduxForm({
-  form: 'house',
-  destroyOnUnmount: false,
-  validate
-})(HouseForm);
+export default reduxForm({validate})(HouseForm);
