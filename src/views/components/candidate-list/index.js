@@ -13,10 +13,10 @@ const CandidateList = ({candidates, removeCandidate, updateCandidate}) => {
         removeCandidate={removeCandidate}
         updateCandidate={updateCandidate}
       />
-
     );
   });
-  return ( 
+
+  return (
     <Card.Group>
       {candidateItems}
     </Card.Group>

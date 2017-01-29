@@ -11,20 +11,18 @@ import { Container, Grid } from 'semantic-ui-react';
 const CandidatePage = ({candidates, removeCandidate, updateCandidate}) => {
   return (
     <Container>
-      <Grid>
+      <Grid centered>
         <Grid.Row>
           <Grid.Column>
             <CandidateAdd createCandidate={candidateActions.handleCreateCandidate()} />
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
-          <Grid.Column>
-            <CandidateList
-              candidates={candidates}
-              removeCandidate={removeCandidate}
-              updateCandidate={updateCandidate}
-            />
-          </Grid.Column>
+          <CandidateList
+            candidates={candidates}
+            removeCandidate={removeCandidate}
+            updateCandidate={updateCandidate}
+          />
         </Grid.Row>
       </Grid>
     </Container>

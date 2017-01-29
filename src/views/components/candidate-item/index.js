@@ -36,7 +36,7 @@ class CandidateItem extends Component {
 
   renderCandidateInput(candidate) {
     return (
-      <div>
+      <Card.Content>
         <CandidateForm
           submitAction={this.save}
           submitButtonText="Update"
@@ -44,31 +44,28 @@ class CandidateItem extends Component {
           form={`candidate-update${candidate.key}`}
         />
         <Button content="Clear" onClick={this.stopEditing} />
-      </div>
+      </Card.Content>
     );
   }
 
   renderCandidate(candidate) {
     return (
-      <Card>
-        <Card.Content>
-          <Card.Header>
-            {candidate.name}
-          </Card.Header>
-          <Card.Meta>
-            {candidate.party}
-          </Card.Meta>
-          <Card.Description>
-            {candidate.color}
-          </Card.Description>
-        </Card.Content>
-        <Card.Content extra>
+      <Card.Content>
+        <Card.Header>
+          {candidate.name}
+        </Card.Header>
+        <Card.Meta>
+          {candidate.party}
+        </Card.Meta>
+        <Card.Description>
+          {candidate.color}
           <div className="ui two buttons">
             <Button content="Edit" basic color="green" icon="pencil" onClick={this.edit} />
             <Button content="Delete" basic color="red" icon="remove" onClick={this.remove} />
           </div>
-        </Card.Content>
-      </Card>
+        </Card.Description>
+        
+      </Card.Content>
     );
   }
 
@@ -77,12 +74,12 @@ class CandidateItem extends Component {
     let { candidate } = this.props;
 
     return (
-      <div>
+      <Card centered>
         {editing ?
           this.renderCandidateInput(candidate) :
           this.renderCandidate(candidate)
         }
-      </div>
+      </Card>
     );
   }
 }
