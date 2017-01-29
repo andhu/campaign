@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { Button, Input } from 'semantic-ui-react';
+import { Button, Card } from 'semantic-ui-react';
 
 import CandidateForm from 'views/components/candidate-form';
 
@@ -29,7 +29,6 @@ class CandidateItem extends Component {
   save(formData) {
     if (this.state.editing) {
       const { candidate } = this.props;
-      // console.log('data: ', formData, 'candidate: ', candidate);
       this.props.updateCandidate(candidate, formData);
       this.stopEditing();
     }
@@ -51,13 +50,25 @@ class CandidateItem extends Component {
 
   renderCandidate(candidate) {
     return (
-      <div>
-        <span>Name: {candidate.name}</span>
-        <span>Party: {candidate.party}</span>
-        <span>Color: {candidate.color}</span>
-        <Button positive icon="pencil" onClick={this.edit} />
-        <Button negative icon="remove" onClick={this.remove} />
-      </div>
+      <Card>
+        <Card.Content>
+          <Card.Header>
+            {candidate.name}
+          </Card.Header>
+          <Card.Meta>
+            {candidate.party}
+          </Card.Meta>
+          <Card.Description>
+            {candidate.color}
+          </Card.Description>
+        </Card.Content>
+        <Card.Content extra>
+          <div className="ui two buttons">
+            <Button content="Edit" basic color="green" icon="pencil" onClick={this.edit} />
+            <Button content="Delete" basic color="red" icon="remove" onClick={this.remove} />
+          </div>
+        </Card.Content>
+      </Card>
     );
   }
 

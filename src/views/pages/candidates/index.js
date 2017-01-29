@@ -5,19 +5,29 @@ import CandidateAdd from 'views/components/candidate-add';
 import CandidateList from 'views/components/candidate-list';
 import { candidateActions, getVisibleCandidates } from 'core/candidates';
 
-import { Modal, Button } from 'semantic-ui-react';
+import { Container, Grid } from 'semantic-ui-react';
 
 
 const CandidatePage = ({candidates, removeCandidate, updateCandidate}) => {
   return (
-    <div>
-      <CandidateAdd createCandidate={candidateActions.handleCreateCandidate()} />
-      <CandidateList
-        candidates={candidates}
-        removeCandidate={removeCandidate}
-        updateCandidate={updateCandidate}
-      />
-    </div>
+    <Container>
+      <Grid>
+        <Grid.Row>
+          <Grid.Column>
+            <CandidateAdd createCandidate={candidateActions.handleCreateCandidate()} />
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row>
+          <Grid.Column>
+            <CandidateList
+              candidates={candidates}
+              removeCandidate={removeCandidate}
+              updateCandidate={updateCandidate}
+            />
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
+    </Container>
   );
 };
 

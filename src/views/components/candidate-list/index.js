@@ -1,7 +1,8 @@
 import { List } from 'immutable';
-import React, { PropTypes} from 'react';
+import React, { PropTypes } from 'react';
 
 import CandidateItem from 'views/components/candidate-item';
+import { Card } from 'semantic-ui-react';
 
 const CandidateList = ({candidates, removeCandidate, updateCandidate}) => {
   let candidateItems = candidates.map((candidate, index) => {
@@ -15,10 +16,10 @@ const CandidateList = ({candidates, removeCandidate, updateCandidate}) => {
 
     );
   });
-  return (
-    <div>Candidate List
+  return ( 
+    <Card.Group>
       {candidateItems}
-    </div>
+    </Card.Group>
   );
 };
 
