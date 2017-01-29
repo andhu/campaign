@@ -12,6 +12,7 @@ const CandidateList = ({candidates, removeCandidate, updateCandidate}) => {
         removeCandidate={removeCandidate}
         updateCandidate={updateCandidate}
       />
+
     );
   });
   return (

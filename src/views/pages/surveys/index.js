@@ -1,18 +1,28 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import SurveyForm from 'views/components/survey-form';
+import SurveyList from 'views/components/survey-list';
 import { surveyActions } from 'core/surveys';
 import moment from 'moment';
+import {Button, Icon} from 'semantic-ui-react';
 
-const SurveysPage = ({candidates}) => {
-  const date = moment().format('YYYY-MM-DD');
+
+// <SurveyForm
+//         initialValues={{candidates, date}}
+//         submitAction={surveyActions.handleCreateSurvey()}
+//         submitButtonText="Save"
+//         form="survey-add"
+//       />
+
+const SurveysPage = ({candidates, surveys}) => {
+  //const date = moment().format('YYYY-MM-DD');
   return (
-    <div>
-      <SurveyForm
-        initialValues={{candidates, date}}
-        submitAction={surveyActions.handleCreateSurvey()}
-        submitButtonText="Save"
-        form="survey-add"
+    <div> 
+      <Button floated='left' icon labelPosition='left' primary size='small'>
+        <Icon name='user' /> Add Survey
+      </Button>
+      <SurveyList
+        surveys={surveys}
       />
     </div>
   );
@@ -24,7 +34,8 @@ SurveysPage.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    candidates: state.candidates.list.toJS()
+    candidates: state.candidates.list.toJS(),
+    surveys: state.surveys.list.toJS()
   };
 };
 
