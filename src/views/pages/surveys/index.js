@@ -7,20 +7,21 @@ import moment from 'moment';
 import {Button, Icon} from 'semantic-ui-react';
 
 
-// <SurveyForm
-//         initialValues={{candidates, date}}
-//         submitAction={surveyActions.handleCreateSurvey()}
-//         submitButtonText="Save"
-//         form="survey-add"
-//       />
+
 
 const SurveysPage = ({candidates, surveys}) => {
-  //const date = moment().format('YYYY-MM-DD');
+  const date = moment().format('YYYY-MM-DD');
   return (
-    <div> 
+    <div>
       <Button floated='left' icon labelPosition='left' primary size='small'>
         <Icon name='user' /> Add Survey
       </Button>
+      <SurveyForm
+        initialValues={{candidates, date}}
+        submitAction={surveyActions.handleCreateSurvey()}
+        submitButtonText="Save"
+        form="survey-add"
+      />
       <SurveyList
         surveys={surveys}
       />

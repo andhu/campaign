@@ -6,9 +6,9 @@ import TextInput from 'views/components/textinput';
 
 import validate from './validate';
 
-const CandidateForm = ({ handleSubmit, invalid, pristine, error, submitting, submitAction, submitButtonText }) => {
+const CandidateForm = ({ handleSubmit, invalid, pristine, error, submitting, createCandidate, submitButtonText }) => {
   return (
-    <form onSubmit={handleSubmit(submitAction)}>
+    <form onSubmit={handleSubmit(createCandidate)}>
       {error && <div>{error}</div>}
       {submitting && <div>Saving...</div>}
       <Field
@@ -50,7 +50,7 @@ CandidateForm.propTypes = {
   initialValue: PropTypes.object,
   invalid: PropTypes.bool.isRequired,
   pristine: PropTypes.bool.isRequired,
-  submitAction: PropTypes.func.isRequired,
+  createCandidate: PropTypes.func.isRequired,
   submitButtonText: PropTypes.string.isRequired,
   submitting: PropTypes.bool.isRequired
 };
