@@ -3,13 +3,12 @@ import {Button} from 'semantic-ui-react';
 
 import {Field, reduxForm } from 'redux-form';
 import TextInput from 'views/components/textinput';
-import { authActions } from 'core/auth';
 import validate from './validate';
 
 
-const SignInForm = ({ handleSubmit, invalid, error, submitting }) => {
+const SignInForm = ({ handleSubmit, invalid, error, submitting, submitAction }) => {
   return (
-    <form onSubmit={handleSubmit(authActions.signIn())}>
+    <form onSubmit={handleSubmit(submitAction)}>
       {error && <div>{error}</div>}
       {submitting && <div>Signing In...</div>}
       <Field
@@ -41,6 +40,7 @@ SignInForm.propTypes = {
   error: PropTypes.string,
   handleSubmit: PropTypes.func.isRequired,
   invalid: PropTypes.bool.isRequired,
+  submitAction: PropTypes.func.isRequired,
   submitting: PropTypes.bool.isRequired
 };
 

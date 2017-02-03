@@ -6,12 +6,13 @@ const Header = ({authenticated, signOut}) => {
 
   // TODO: implement a loading progressbar below the menu
   // let loginLogoutLink = auth.isLogged ? <LogoutLink signOut={signOut} /> : <LoginLink />;
-  // let displayName = user.email ? <NavLink><div><Icon name="user" />{user.email}</div></NavLink> : <NavLink><div><Icon name="user" />Guest</div></NavLink>; 
+  // let displayName = user.email ? <NavLink><div><Icon name="user" />{user.email}</div></NavLink> : <NavLink><div><Icon name="user" />Guest</div></NavLink>;
   return (
     <Menu pointing>
       <Menu.Item as={Link} to="/" name="Home" />
       <Menu.Item as={Link} to="/stats" name="Stats" />
       <Menu.Item as={Link} to="/about" name="About" />
+      <Menu.Item as={Link} to="/settings" name="Settings" />
       {authenticated ? <Menu.Item as={Link} to="/candidates" name="Candidates" /> : null}
        {authenticated ? <Menu.Item as={Link} to="/houses" name="Houses" /> : null}
       {authenticated ? <Menu.Item as={Link} to="/surveys" name="Surveys" /> : null}
