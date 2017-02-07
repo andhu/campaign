@@ -1,31 +1,50 @@
 import React, {PropTypes} from 'react';
 import { Link } from 'react-router';
-import { Menu, Button } from 'semantic-ui-react';
+import { Menu, Icon, Button } from 'semantic-ui-react';
 
-const Header = ({authenticated, signOut}) => {
+const Header = ({signOut}) => {
 
   // TODO: implement a loading progressbar below the menu
   // let loginLogoutLink = auth.isLogged ? <LogoutLink signOut={signOut} /> : <LoginLink />;
   // let displayName = user.email ? <NavLink><div><Icon name="user" />{user.email}</div></NavLink> : <NavLink><div><Icon name="user" />Guest</div></NavLink>;
   return (
-    <Menu pointing>
-      <Menu.Item as={Link} to="/" name="Home" />
-      <Menu.Item as={Link} to="/stats" name="Stats" />
-      <Menu.Item as={Link} to="/about" name="About" />
-      <Menu.Item as={Link} to="/settings" name="Settings" />
-      {authenticated ? <Menu.Item as={Link} to="/candidates" name="Candidates" /> : null}
-       {authenticated ? <Menu.Item as={Link} to="/houses" name="Houses" /> : null}
-      {authenticated ? <Menu.Item as={Link} to="/surveys" name="Surveys" /> : null}
-      <Menu.Menu position="right">
-        {!authenticated ? <Menu.Item as={Link} to="/sign-in" name="Sign In" /> : null}
-        {authenticated ? <Button negative content="Sign Out" onClick={signOut} /> : null}
+    <div>
+      <Menu.Item as={Link} to="/" name="Home">
+        <Icon name='home' />
+        Home
+      </Menu.Item>
+      <Menu.Item as={Link} to="/stats" name="Stats">
+        <Icon name='line chart' />
+        Statitics
+      </Menu.Item>
+      <Menu.Item as={Link} to="/about" name="About">
+        <Icon name='info circle' />
+        About
+      </Menu.Item>
+      <Menu.Item as={Link} to="/surveys" name="Surveys">
+        <Icon name='edit' />
+        Surveys
+      </Menu.Item>
+      <Menu.Item as={Link} to="/houses" name="Houses">
+        <Icon name='building' />
+        Houses
+      </Menu.Item>
+      <Menu.Item as={Link} to="/candidates" name="Candidates">
+        <Icon name='users' />
+        Candidates
+      </Menu.Item>
+      <Menu.Item as={Link} to="/settings" name="Settings">
+        <Icon name='setting' />
+        Settings
+      </Menu.Item>
+      <Menu.Menu>
+        <Button negative content="Sign Out" onClick={signOut} />
       </Menu.Menu>
-    </Menu>
+    </div>
   );
 };
 
 Header.propTypes = {
-  authenticated: PropTypes.bool.isRequired,
   signOut: React.PropTypes.func.isRequired
 };
 

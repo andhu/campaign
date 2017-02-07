@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import {Button} from 'semantic-ui-react';
+import {Button,Grid} from 'semantic-ui-react';
 
 import {Field, reduxForm } from 'redux-form';
 import TextInput from 'views/components/textinput';
@@ -8,31 +8,36 @@ import validate from './validate';
 
 const SignInForm = ({ handleSubmit, invalid, error, submitting, submitAction }) => {
   return (
-    <form onSubmit={handleSubmit(submitAction)}>
-      {error && <div>{error}</div>}
-      {submitting && <div>Signing In...</div>}
-      <Field
-        placeholder="Email"
-        type="email"
-        name="email"
-        component={TextInput}
-      />
+    <Grid columns={3} centered>
+      <Grid.Column>
+        <form onSubmit={handleSubmit(submitAction)}>
+          {error && <div>{error}</div>}
+          {submitting && <div>Signing In...</div>}
+          <Field
+            placeholder="Email"
+            type="email"
+            name="email"
+            component={TextInput}
+          />
 
-      <Field
-        placeholder="Password"
-        type="password"
-        name="password"
-        component={TextInput}
-      />
+          <Field
+            placeholder="Password"
+            type="password"
+            name="password"
+            component={TextInput}
+          />
 
-      <Button
-        inverted color="green"
-        content="Sign In"
-        icon="sign in"
-        labelPosition="left"
-        disabled={invalid || submitting}
-      />
-    </form>
+          <Button
+            inverted color="green"
+            content="Sign In"
+            icon="sign in"
+            labelPosition="left"
+            disabled={invalid || submitting}
+          />
+        </form>
+      </Grid.Column>
+    </Grid>
+    
   );
 };
 

@@ -1,12 +1,16 @@
 import React, {PropTypes} from 'react';
-import {Input, Message} from 'semantic-ui-react';
+import {Input,Container} from 'semantic-ui-react';
 
 const TextInput = ({input, meta: { touched, error }, ...props }) => {
   const hasError = touched && error !== undefined;
   return (
     <div>
-      <Input error={hasError} {...input} {...props} />
-      {hasError && <span>{error}</span>}
+      <div>
+      <Input as={Container} error={hasError} {...input} {...props} />
+      </div>
+      <div>
+        {hasError && <span>{error}</span>}
+      </div>
     </div>
   );
 };
