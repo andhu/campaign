@@ -9,7 +9,7 @@ import {Grid, Container, Button, Icon} from 'semantic-ui-react';
 
 
 
-const SurveysPage = ({candidates, surveys}) => {
+const SurveysPage = ({houses, candidates, surveys}) => {
   const date = moment().format('YYYY-MM-DD');
   return (
     <Container fluid>
@@ -20,6 +20,7 @@ const SurveysPage = ({candidates, surveys}) => {
             submitAction={surveyActions.handleCreateSurvey()}
             submitButtonText="Save"
             form="survey-add"
+            houses={houses}
           />
         </Grid.Column>
         <Grid.Column>
@@ -31,11 +32,13 @@ const SurveysPage = ({candidates, surveys}) => {
 };
 
 SurveysPage.propTypes = {
-  candidates: PropTypes.array.isRequired
+  candidates: PropTypes.array.isRequired,
+  houses: PropTypes.array.isRequired
 };
 
 const mapStateToProps = state => {
   return {
+    houses: state.houses.list.toJS(),
     candidates: state.candidates.list.toJS(),
     surveys: state.surveys.list.toJS()
   };

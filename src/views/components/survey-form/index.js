@@ -4,11 +4,12 @@ import { Button } from 'semantic-ui-react';
 import { Field, FieldArray, reduxForm } from 'redux-form';
 
 import TextInput from 'views/components/textinput';
+import SearchInput from 'views/components/search-input';
 import candidatesInput from 'views/components/candidates-input';
 
 import validate from './validate';
 
-const SurveyForm = ({ handleSubmit, invalid, pristine, error, submitting, submitAction, submitButtonText }) => {
+const SurveyForm = ({houses, handleSubmit, invalid, pristine, error, submitting, submitAction, submitButtonText }) => {
   return (
     <form onSubmit={handleSubmit(submitAction)}>
       {error && <div>{error}</div>}
@@ -17,7 +18,8 @@ const SurveyForm = ({ handleSubmit, invalid, pristine, error, submitting, submit
         placeholder="House Name"
         type="text"
         name="houseName"
-        component={TextInput}
+        houses={houses}
+        component={SearchInput}
       />
 
       <Field
@@ -62,6 +64,7 @@ const SurveyForm = ({ handleSubmit, invalid, pristine, error, submitting, submit
 };
 
 SurveyForm.propTypes = {
+  houses: PropTypes.array.isRequired,
   error: PropTypes.string,
   form: PropTypes.string.isRequired,
   handleSubmit: PropTypes.func.isRequired,
