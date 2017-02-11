@@ -6,9 +6,6 @@ const validate = values => {
   if (!values.floor) {
     errors.floor = 'Required';
   }
-  if (!values.date) {
-    errors.date = 'Required';
-  }
 
   if (!values.agent) {
     errors.agent = 'Required';

@@ -16,7 +16,7 @@ const SurveyForm = ({ handleSubmit, invalid, pristine, error, submitting, submit
       <Field
         placeholder="House Name"
         type="text"
-        name="house"
+        name="houseName"
         component={TextInput}
       />
 
@@ -26,14 +26,7 @@ const SurveyForm = ({ handleSubmit, invalid, pristine, error, submitting, submit
         name="floor"
         component={TextInput}
       />
-
-      <Field
-        placeholder="Date"
-        type="text"
-        name="date"
-        component={TextInput}
-      />
-
+      
       <Field
         placeholder="Total Voters"
         type="number"

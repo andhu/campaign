@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
+import { connect } from 'react-redux';
 import { Table, Button, Icon, Label, Header } from 'semantic-ui-react';
 
 const SurveyList = ({surveys}) => {
@@ -64,4 +65,15 @@ const SurveyList = ({surveys}) => {
   );
 };
 
-export default SurveyList;
+SurveyList.propTypes = {
+  surveys: PropTypes.array.isRequired
+};
+
+const mapStateToProps = (state) => {
+  return {
+    surveys: state.surveys.list.toJS()
+  };
+};
+
+
+export default connect(mapStateToProps)(SurveyList);

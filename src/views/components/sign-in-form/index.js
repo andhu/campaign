@@ -9,7 +9,7 @@ import validate from './validate';
 const SignInForm = ({ handleSubmit, invalid, error, submitting, submitAction }) => {
   return (
     <Grid columns={3} centered>
-      <Grid.Column>
+      <Grid.Column  mobile={16} tablet={8} computer={4}>
         <form onSubmit={handleSubmit(submitAction)}>
           {error && <div>{error}</div>}
           {submitting && <div>Signing In...</div>}

@@ -4,7 +4,7 @@ import SurveyForm from 'views/components/survey-form';
 import SurveyList from 'views/components/survey-list';
 import { surveyActions } from 'core/surveys';
 import moment from 'moment';
-import {Button, Icon} from 'semantic-ui-react';
+import {Grid, Container, Button, Icon} from 'semantic-ui-react';
 
 
 
@@ -12,20 +12,21 @@ import {Button, Icon} from 'semantic-ui-react';
 const SurveysPage = ({candidates, surveys}) => {
   const date = moment().format('YYYY-MM-DD');
   return (
-    <div>
-      <Button floated='left' icon labelPosition='left' primary size='small'>
-        <Icon name='user' /> Add Survey
-      </Button>
-      <SurveyForm
-        initialValues={{candidates, date}}
-        submitAction={surveyActions.handleCreateSurvey()}
-        submitButtonText="Save"
-        form="survey-add"
-      />
-      <SurveyList
-        surveys={surveys}
-      />
-    </div>
+    <Container fluid>
+      <Grid columns={1} centered>
+        <Grid.Column mobile={16} tablet={8} computer={4}>
+          <SurveyForm
+            initialValues={{candidates, date}}
+            submitAction={surveyActions.handleCreateSurvey()}
+            submitButtonText="Save"
+            form="survey-add"
+          />
+        </Grid.Column>
+        <Grid.Column>
+          <SurveyList/>
+        </Grid.Column>
+      </Grid>
+    </Container>
   );
 };
 

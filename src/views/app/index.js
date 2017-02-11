@@ -1,14 +1,15 @@
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import { authActions, getAuth } from 'core/auth';
+import SideBarMenu from 'views/components/sidebarmenu';
 import Header from 'views/components/header';
-import { Container, Grid, Sidebar, Segment, Progress, Menu, Rail, Icon } from 'semantic-ui-react';
+import { Container, Grid, Sidebar, Segment, Progress, Menu, Rail, Icon, Divider } from 'semantic-ui-react';
 
 class App extends Component {
   super(){
   }
 
-  state = { visible: true };
+  state = { visible: false };
   toggleVisibility = () => this.setState({ visible: !this.state.visible })
 
   render(){
@@ -19,21 +20,22 @@ class App extends Component {
         {this.props.authenticated ?
           <Sidebar.Pushable as={Segment}>
           <Sidebar as={Menu} animation='push' width='thin' visible={visible} icon='labeled' vertical>
-             <Header authenticated={this.props.authenticated} signOut={this.props.signOut} />
+             <SideBarMenu/>
           </Sidebar>
           <Sidebar.Pusher>
+            <Header signOut={this.props.signOut}/>
+            <Progress percent={60} attached="top" color="teal" indicating />
+            <Divider horizontal hidden section></Divider>
             <Container fluid>
-
-              <Container as={Rail} internal position='left' textAlign='left'>
-                <Icon name='align justify' onClick={this.toggleVisibility} size='big' bordered circular/>
+              <Container as={Rail} internal position='left' textAlign='left' style={{zIndex:1111111}} close>
+                  <Icon name='align justify' onClick={this.toggleVisibility} size='big' bordered circular/>
               </Container>
-              <Progress percent={60} attached="top" color="teal" indicating />
               <main>{this.props.children}</main>
             </Container>
-          </Sidebar.Pusher>
-          </Sidebar.Pushable>
-          :
-          <main>{this.props.children}</main>
+        </Sidebar.Pusher>
+        </Sidebar.Pushable>
+        :
+        <main>{this.props.children}</main>
         }
       </Grid.Column>
     </Grid>
