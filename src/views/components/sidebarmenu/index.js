@@ -17,10 +17,6 @@ const SideBarMenu = () => {
         <Icon name='line chart' />
         Statitics
       </Menu.Item>
-      <Menu.Item as={Link} to="/about" name="About">
-        <Icon name='info circle' />
-        About
-      </Menu.Item>
       <Menu.Item as={Link} to="/surveys" name="Surveys">
         <Icon name='edit' />
         Surveys

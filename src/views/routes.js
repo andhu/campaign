@@ -1,6 +1,5 @@
 import App from './app';
 import HomePage from './pages/home';
-import AboutPage from './pages/about';
 import SignInPage from './pages/sign-in';
 import SurveysPage from './pages/surveys';
 import CandidatesPage from './pages/candidates';
@@ -12,7 +11,6 @@ import { isAuthenticated } from 'core/auth';
 
 export const paths = {
   ROOT: '/',
-  ABOUT: '/about',
   CANDIDATES: '/candidates',
   HOUSES: '/houses',
   SIGN_IN: '/sign-in',
@@ -51,10 +49,6 @@ export const getRoutes = getState => {
         path: paths.SIGN_IN,
         component: SignInPage,
         onEnter: requireUnauth(getState)
-      },
-      {
-        path: paths.ABOUT,
-        component: AboutPage
       },
       {
         path: paths.CANDIDATES,
