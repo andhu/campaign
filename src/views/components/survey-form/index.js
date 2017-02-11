@@ -36,8 +36,6 @@ const SurveyForm = ({houses, handleSubmit, invalid, pristine, error, submitting,
         component={TextInput}
       />
 
-      <FieldArray name="candidates" component={candidatesInput} />
-
       <Field
         placeholder="Agent Name"
         type="text"
@@ -51,6 +49,8 @@ const SurveyForm = ({houses, handleSubmit, invalid, pristine, error, submitting,
         name="contact"
         component={TextInput}
       />
+
+      <FieldArray name="candidates" component={candidatesInput} />
 
       <Button
         inverted color="green"

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Header, Grid, Container, Card, Icon, Cell } from 'semantic-ui-react';
+import {Header, Divider, Grid, Container, Card, Icon, Cell } from 'semantic-ui-react';
 import { Link } from 'react-router';
 import SurveyDone from'views/components/chart-survey-done';
 import HouseLeft from'views/components/chart-houses-left';
@@ -9,12 +9,16 @@ import SurveyList from 'views/components/survey-list';
 const HomePage = () => {
   return (
     <Container fluid>
-      <Grid columns={3} centered celled>
+      <Grid columns={3} centered>
         <Grid.Row>
           <Grid.Column mobile={16} tablet={8} computer={4}>
           
-          <Card raised centered color="purple" fluid>
-            <Card.Content header='Surveys Completed' />
+          <Card raised centered color="green" fluid>
+            <Card.Content>
+              <Card.Header>
+                <Header as='h3' color='green'>Surveys Completed</Header>
+              </Card.Header>
+            </Card.Content>
             <Card.Content>
               <SurveyDone/>
             </Card.Content>
@@ -24,8 +28,12 @@ const HomePage = () => {
           </Card>
           </Grid.Column>
           <Grid.Column mobile={16} tablet={8} computer={4}>
-           <Card raised centered color="purple" fluid>
-            <Card.Content header='Houses Left' />
+           <Card raised centered color="blue" fluid>
+            <Card.Content>
+              <Card.Header>
+                <Header as='h3' color='blue'>Houses Left</Header>
+              </Card.Header>
+            </Card.Content>
             <Card.Content>
               <HouseLeft/>
             </Card.Content>
@@ -35,8 +43,12 @@ const HomePage = () => {
           </Card>
           </Grid.Column>
           <Grid.Column mobile={16} tablet={8} computer={4}>
-            <Card raised centered color="purple" fluid>
-            <Card.Content header='Surveys Completed' />
+            <Card raised centered color="green" fluid>
+            <Card.Content>
+              <Card.Header>
+                <Header as='h3' color='green'>Surveys Completed</Header>
+              </Card.Header>
+            </Card.Content>
             <Card.Content>
               <SurveyDone/>
             </Card.Content>
@@ -47,16 +59,11 @@ const HomePage = () => {
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
-          <Grid.Column  mobile={16} tablet={16} computer={8}>
-            <SurveyList/>
-          </Grid.Column>
-           <Grid.Column  mobile={16} tablet={16} computer={8}>
+          <Grid.Column  mobile={14} tablet={14} computer={12}>
+            <Divider horizontal>Survey List</Divider>
             <SurveyList/>
           </Grid.Column>
         </Grid.Row>
-      </Grid>
-      <Grid columns={2} centered padded>
-        
       </Grid>
       </Container>
   );

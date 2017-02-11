@@ -15,7 +15,7 @@ const HouseLeft = ({surveys,houses}) => {
         <Pie 
         data={data}
         endAngle={endAngle}
-        fill="#82ca9d" label labelLine={false}/>
+        fill="#4286f4" label labelLine={false}/>
       </PieChart>
     </ResponsiveContainer>
     </div>
