@@ -1,27 +1,21 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import SurveyForm from 'views/components/survey-form';
+
+import SurveyAdd from 'views/components/survey-add';
 import SurveyList from 'views/components/survey-list';
-import { surveyActions } from 'core/surveys';
-import moment from 'moment';
+import { surveyActions,getVisibleSurveys } from 'core/surveys';
+
 import {Grid, Container, Button, Icon} from 'semantic-ui-react';
 
 
 
 
-const SurveysPage = ({houses, candidates, surveys}) => {
-  const date = moment().format('YYYY-MM-DD');
+const SurveysPage = ({surveys}) => {
   return (
     <Container fluid>
       <Grid columns={1} centered>
         <Grid.Column mobile={16} tablet={8} computer={4}>
-          <SurveyForm
-            initialValues={{candidates, date}}
-            submitAction={surveyActions.handleCreateSurvey()}
-            submitButtonText="Save"
-            form="survey-add"
-            houses={houses}
-          />
+          <SurveyAdd createSurvey={surveyActions.handleCreateSurvey()} />
         </Grid.Column>
         <Grid.Column>
           <SurveyList/>
@@ -32,15 +26,12 @@ const SurveysPage = ({houses, candidates, surveys}) => {
 };
 
 SurveysPage.propTypes = {
-  candidates: PropTypes.array.isRequired,
-  houses: PropTypes.array.isRequired
+  surveys: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => {
   return {
-    houses: state.houses.list.toJS(),
-    candidates: state.candidates.list.toJS(),
-    surveys: state.surveys.list.toJS()
+    surveys: getVisibleSurveys(state)
   };
 };
 

@@ -18,7 +18,7 @@ const SurveyForm = ({houses, handleSubmit, invalid, pristine, error, submitting,
         placeholder="House Name"
         type="text"
         name="houseName"
-        houses={houses}
+        dropdownList={houses}
         component={SearchInput}
       />
 
@@ -50,7 +50,7 @@ const SurveyForm = ({houses, handleSubmit, invalid, pristine, error, submitting,
         component={TextInput}
       />
 
-      <FieldArray name="candidates" component={candidatesInput} />
+      <FieldArray name="candidateList" component={candidatesInput} />
 
       <Button
         inverted color="green"
