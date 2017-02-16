@@ -22,3 +22,8 @@ export const getVisibleSurveys = createSelector(
     }
   }
 );
+
+export const getSurveyCount = createSelector(
+  getSurveyList,
+  surveyList => surveyList.size
+)

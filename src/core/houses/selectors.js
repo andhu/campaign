@@ -22,3 +22,9 @@ export const getVisibleHouses = createSelector(
     }
   }
 );
+
+export const getHouseCount = createSelector(
+  getHouseList,
+  houseList => houseList.size * 5
+);
+

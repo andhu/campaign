@@ -1,10 +1,12 @@
 import React, {PropTypes} from 'react';
 import { connect } from 'react-redux';
+
+import { getHouseCount } from 'core/houses';
+import { getSurveyCount } from 'core/surveys';
+
 import { ResponsiveContainer,PieChart, Pie, Cell} from 'recharts';
 
-const HouseLeft = ({surveys,houses}) => {
-  let surveyCount =  surveys.list.length;
-  let houseCount = houses.list.length * 5;
+const HouseLeft = ({surveyCount,houseCount}) => {
   let HousesLeft = houseCount - surveyCount;
   let endAngle = 360 - (surveyCount/houseCount * 360);
   let data = [{name: 'HousesLeft', value:HousesLeft}];
@@ -24,16 +26,14 @@ const HouseLeft = ({surveys,houses}) => {
 };
 
 HouseLeft.propTypes = {
-  surveys: PropTypes.object.isRequired,
-  houses: PropTypes.object.isRequired
+  surveyCount: PropTypes.number.isRequired,
+  houseCount: PropTypes.number.isRequired
 };
 
-const mapStateToProps = (state) => {
-  return {
-    surveys: state.surveys.toJS(),
-    houses: state.houses.toJS()
-  };
-};
+const mapStateToProps = state => ({
+  houseCount: getHouseCount(state),
+  surveyCount : getSurveyCount(state)
+});
 
 
 export default connect(mapStateToProps)(HouseLeft);
