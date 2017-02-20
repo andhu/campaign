@@ -1,5 +1,6 @@
+import { List } from 'immutable';
 import React, { PropTypes } from 'react';
-import { Button } from 'semantic-ui-react';
+import { Button, Header } from 'semantic-ui-react';
 
 import { Field, FieldArray, reduxForm } from 'redux-form';
 
@@ -9,7 +10,17 @@ import candidatesInput from 'views/components/candidates-input';
 
 import validate from './validate';
 
+
 const SurveyForm = ({houses, handleSubmit, invalid, pristine, error, submitting, submitAction, submitButtonText }) => {
+  const housesList = houses.map((house) => {
+        return {
+            key: house.key,
+            value: house.key,
+            text: house.name,
+            content: <Header content={house.name} subheader={house.district} />
+        }
+    });
+
   return (
     <form onSubmit={handleSubmit(submitAction)}>
       {error && <div>{error}</div>}
@@ -17,8 +28,8 @@ const SurveyForm = ({houses, handleSubmit, invalid, pristine, error, submitting,
       <Field
         placeholder="House Name"
         type="text"
-        name="houseName"
-        dropdownList={houses}
+        name="house"
+        dropdownList={housesList}
         component={SearchInput}
       />
 
@@ -50,7 +61,7 @@ const SurveyForm = ({houses, handleSubmit, invalid, pristine, error, submitting,
         component={TextInput}
       />
 
-      <FieldArray name="candidateList" component={candidatesInput} />
+      <FieldArray name="candidates" component={candidatesInput} />
 
       <Button
         inverted color="green"

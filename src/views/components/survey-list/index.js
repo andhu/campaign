@@ -7,7 +7,7 @@ const SurveyList = ({surveys}) => {
   let surveyItems = surveys.map((survey, index) => {
     let candidates = survey.candidates.map((candidate, index) => {
       return (
-        <Label as="h5" key={index}>
+        <Label as="h5" key={index} color={candidate.color}>
           {candidate.name} - {candidate.party}
           <Label.Detail>{candidate.votes}</Label.Detail>
         </Label>

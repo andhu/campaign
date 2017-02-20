@@ -7,22 +7,12 @@ import SurveyForm from 'views/components/survey-form';
 import { getVisibleCandidates } from 'core/candidates';
 import { getVisibleHouses } from 'core/houses';
 
-import { Modal, Button, Header } from 'semantic-ui-react';
+import { Modal, Button } from 'semantic-ui-react';
 
 class SurveyAdd extends Component {
   render() {
     var { createSurvey, candidates, houses } = this.props;
     const date = moment().format('YYYY-MM-DD');
-    const housesList = houses.toJS().map((house) => {
-        return {
-            key: house.key,
-            value: house.key,
-            text: house.name,
-            content: <Header content={house.name} subheader={house.district} />
-        }
-    });
-
-  const candidateList = candidates.toJS();
     return (
       <Modal
         trigger={<Button icon="world" content="New Survey" onClick={this.handleOpen} />}
@@ -31,11 +21,11 @@ class SurveyAdd extends Component {
         <Modal.Header>New survey</Modal.Header>
         <Modal.Content>
           <SurveyForm
-            initialValues={{candidateList, date}}
+            initialValues={{candidates, date}}
             submitAction={createSurvey}
             submitButtonText="Save"
             form="survey-add"
-            houses={housesList}
+            houses={houses}
           />
         </Modal.Content>
       </Modal>
@@ -45,14 +35,14 @@ class SurveyAdd extends Component {
 
 SurveyAdd.propTypes = {
   createSurvey: PropTypes.func.isRequired,
-  candidates: PropTypes.instanceOf(List),
-  houses: PropTypes.instanceOf(List)
+  candidates: PropTypes.array.isRequired,
+  houses: PropTypes.array.isRequired
 };
 
 const mapStateToProps = state => {
   return {
-    candidates: getVisibleCandidates(state),
-    houses: getVisibleHouses(state)
+    candidates: getVisibleCandidates(state).toJS(),
+    houses: getVisibleHouses(state).toJS()
   };
 };
 

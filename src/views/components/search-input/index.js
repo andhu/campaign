@@ -6,7 +6,11 @@ const SearchInput = ({dropdownList, input, meta: { touched, error }, ...props })
   return (
     <div>
       <div>
-      <Dropdown fluid search selection error={hasError} {...input} {...props} options={dropdownList}/>
+      <Dropdown fluid search selection 
+                error={hasError} {...input} 
+                {...props}  value={input.value}
+                 onChange={(param,data) => input.onChange(data.value)}
+                options={dropdownList}/>
       </div>
       <div>
         {hasError && <span>{error}</span>}
