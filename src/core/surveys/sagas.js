@@ -36,7 +36,7 @@ const updateSurvey = write.bind(null, surveyList, surveyList.update, surveyActio
 function* watchAuthentication() {
   while (true) {
     let { payload } = yield take(authActions.SIGN_IN_SUCCESS);
-    surveyList.path = `surveys/${payload.authUser.uid}`;
+    surveyList.path = `surveys`;
     const job = yield fork(read);
 
     yield take([authActions.SIGN_OUT_SUCCESS]);

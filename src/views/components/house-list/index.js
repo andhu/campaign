@@ -46,7 +46,7 @@ const HouseList = ({houses, removeHouse, updateHouse}) => {
 };
 
 HouseList.propTypes = {
-  houses: PropTypes.array.isRequired,
+  houses: PropTypes.instanceOf(List).isRequired,
   removeHouse: PropTypes.func.isRequired,
   updateHouse: PropTypes.func.isRequired
 };

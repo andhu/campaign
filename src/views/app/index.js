@@ -18,7 +18,7 @@ class App extends Component {
     <Grid centered columns={1}  verticalAlign={!this.props.authenticated ?'middle':null} style={{height:100+'%'}}>
       <Grid.Column>
         {this.props.authenticated ?
-          <Sidebar.Pushable as={Segment}>
+          <Sidebar.Pushable>
           <Sidebar as={Menu} animation='push' width='thin' visible={visible} icon='labeled' vertical>
              <SideBarMenu/>
           </Sidebar>

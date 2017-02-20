@@ -36,7 +36,7 @@ const updateCandidate = write.bind(null, candidateList, candidateList.update, ca
 function* watchAuthentication() {
   while (true) {
     let { payload } = yield take(authActions.SIGN_IN_SUCCESS);
-    candidateList.path = `candidates/${payload.authUser.uid}`;
+    candidateList.path = `candidates`;
     const job = yield fork(read);
 
     yield take([authActions.SIGN_OUT_SUCCESS]);

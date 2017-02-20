@@ -36,7 +36,7 @@ const updateHouse = write.bind(null, houseList, houseList.update, houseActions.u
 function* watchAuthentication() {
   while (true) {
     let { payload } = yield take(authActions.SIGN_IN_SUCCESS);
-    houseList.path = `houses/${payload.authUser.uid}`;
+    houseList.path = `houses`;
     const job = yield fork(read);
 
     yield take([authActions.SIGN_OUT_SUCCESS]);

@@ -58,7 +58,7 @@ const HomePage = () => {
           </Card>
           </Grid.Column>
         </Grid.Row>
-        <Grid.Row>
+        <Grid.Row only="computer">
           <Grid.Column  mobile={14} tablet={14} computer={12}>
             <Divider horizontal>Survey List</Divider>
             <SurveyList/>
