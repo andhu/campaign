@@ -27,15 +27,15 @@ function* signOut() {
 
 }
 
-function* createUser({ email, password}) {
-  try {
-    const authData = yield call([firebaseAuth, firebaseAuth.createUserWithEmailAndPassword], email, password);
-    yield put(authActions.createUserSuccess(authData));
-  }
-  catch (error) {
-    yield put(authActions.createUserFailed(error));
-  }
-}
+// function* createUser({ email, password}) {
+//   try {
+//     const authData = yield call([firebaseAuth, firebaseAuth.createUserWithEmailAndPassword], email, password);
+//     yield put(authActions.createUserSuccess(authData));
+//   }
+//   catch (error) {
+//     yield put(authActions.createUserFailed(error));
+//   }
+// }
 
 
 
@@ -57,12 +57,12 @@ function* watchSignOut() {
   }
 }
 
-function* watchCreateUser() {
-  while (true) {
-    let { payload } = yield take(authActions.CREATE_USER);
-    yield fork(createUser, payload);
-  }
-}
+// function* watchCreateUser() {
+//   while (true) {
+//     let { payload } = yield take(authActions.CREATE_USER);
+//     yield fork(createUser, payload);
+//   }
+// }
 
 
 //=====================================
@@ -71,6 +71,6 @@ function* watchCreateUser() {
 
 export const authSagas = [
   fork(watchSignIn),
-  fork(watchSignOut),
-  fork(watchCreateUser)
+  fork(watchSignOut)
+  // fork(watchCreateUser)
 ];

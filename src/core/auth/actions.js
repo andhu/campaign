@@ -11,9 +11,9 @@ export const authActions = {
   SIGN_OUT_SUCCESS: 'SIGN_OUT_SUCCESS',
   SIGN_OUT_FAILED: 'SIGN_OUT_FAILED',
 
-  CREATE_USER: 'CREATE_USER',
-  CREATE_USER_SUCCESS: 'CREATE_USER_SUCCESS',
-  CREATE_USER_FAILED: 'CREATE_USER_FAILED',
+  // CREATE_USER: 'CREATE_USER',
+  // CREATE_USER_SUCCESS: 'CREATE_USER_SUCCESS',
+  // CREATE_USER_FAILED: 'CREATE_USER_FAILED',
 
   signIn: () => onSubmitActions(
     authActions.SIGN_IN,
@@ -44,11 +44,11 @@ export const authActions = {
     type: authActions.SIGN_OUT_SUCCESS
   }),
 
-  createUser: () => onSubmitActions(
-    authActions.CREATE_USER,
-    authActions.CREATE_USER_SUCCESS,
-    authActions.CREATE_USER_FAILED
-  ),
+  // createUser: () => onSubmitActions(
+  //   authActions.CREATE_USER,
+  //   authActions.CREATE_USER_SUCCESS,
+  //   authActions.CREATE_USER_FAILED
+  // ),
 
   createUserFailed: error => ({
     type: authActions.CREATE_USER_FAILED,

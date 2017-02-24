@@ -6,6 +6,7 @@ import { reducer as formReducer } from 'redux-form';
 import { candidatesReducer, candidateActions } from './candidates';
 import { surveysReducer, surveyActions } from './surveys';
 import { housesReducer, houseActions } from './houses';
+import { usersReducer } from './users';
 
 
 export default combineReducers({
@@ -39,6 +40,7 @@ export default combineReducers({
   routing: routerReducer,
   candidates: candidatesReducer,
   surveys: surveysReducer,
-  houses: housesReducer
+  houses: housesReducer,
+  users: usersReducer
 
 });

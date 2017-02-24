@@ -15,6 +15,7 @@ export class FirebaseList {
   }
 
   push(value) {
+    console.log('firebase push: ', value);
     return new Promise((resolve, reject) => {
       firebaseDb.ref(this.path)
         .push(value, error => error ? reject(error) : resolve());

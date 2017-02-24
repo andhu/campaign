@@ -7,6 +7,9 @@ export const AuthState = new Record({
   user: null
 });
 
+
+
+
 export function authReducer(state = new AuthState(), {type, payload}) {
   switch (type) {
     case authActions.SIGN_IN_SUCCESS:
