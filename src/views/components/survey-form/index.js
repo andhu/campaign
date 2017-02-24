@@ -1,6 +1,6 @@
 import { List } from 'immutable';
 import React, { PropTypes } from 'react';
-import { Button, Header } from 'semantic-ui-react';
+import { Button, Header, DropDown } from 'semantic-ui-react';
 
 import { Field, FieldArray, reduxForm } from 'redux-form';
 
@@ -12,34 +12,34 @@ import validate from './validate';
 
 
 const SurveyForm = ({houses, handleSubmit, invalid, pristine, error, submitting, submitAction, submitButtonText }) => {
-  const housesList = houses.map((house) => {
-        return {
-            key: house.key,
-            value: house.key,
-            text: house.name,
-            content: <Header content={house.name} subheader={house.district} />
-        }
-    });
+  const houseOptions = houses.map( house => {
+    return {
+      key: house.key,
+      value: house.key,
+      text: house.name
+    };
+  });
 
   return (
     <form onSubmit={handleSubmit(submitAction)}>
       {error && <div>{error}</div>}
       {submitting && <div>Saving...</div>}
+      <h5>House Name</h5>
       <Field
         placeholder="House Name"
         type="text"
         name="house"
-        dropdownList={housesList}
+        options={houseOptions}
         component={SearchInput}
       />
-
+      <h5>Floor</h5>
       <Field
         placeholder="Floor"
         type="text"
         name="floor"
         component={TextInput}
       />
-      
+      <h5>Total Voters</h5>
       <Field
         placeholder="Total Voters"
         type="number"
@@ -47,13 +47,14 @@ const SurveyForm = ({houses, handleSubmit, invalid, pristine, error, submitting,
         component={TextInput}
       />
 
+      <h5>Agent Name</h5>
       <Field
         placeholder="Agent Name"
         type="text"
         name="agent"
         component={TextInput}
       />
-
+      <h5>Contact Number</h5>
       <Field
         placeholder="Contact Number"
         type="text"

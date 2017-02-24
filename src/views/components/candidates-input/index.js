@@ -9,8 +9,9 @@ const candidatesInput = ({ fields, meta: { touched, error}}) => {
   return (
     <div>
       {fields.map((candidate, index, fields) =>
-        <Grid columns={2} container>
-          <Grid.Column width={10}>       
+        <Grid key={index} columns={2} container>
+          <Grid.Column width={10}>
+            <h5>Number of Votes</h5>
             <Field
               placeholder="Votes"
               name={`${candidate}.votes`}

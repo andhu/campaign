@@ -1,6 +1,6 @@
-import React, {PropTypes} from 'react';
-import { Link } from 'react-router';
-import { Menu, Icon, Button } from 'semantic-ui-react';
+import React, { PropTypes } from 'react';
+// import { Link } from 'react-router';
+import { Menu, Button } from 'semantic-ui-react';
 
 const Header = ({signOut}) => {
 
@@ -10,7 +10,7 @@ const Header = ({signOut}) => {
   return (
     <Menu fixed="top" floated icon secondary>
       <Menu.Item header>Campaign</Menu.Item>
-      <Menu.Menu position='right'>
+      <Menu.Menu position="right">
         <Button negative content="Sign Out" onClick={signOut} />
       </Menu.Menu>
     </Menu>
@@ -18,7 +18,7 @@ const Header = ({signOut}) => {
 };
 
 Header.propTypes = {
-  signOut: React.PropTypes.func.isRequired
+  signOut: PropTypes.func.isRequired
 };
 
 export default Header;

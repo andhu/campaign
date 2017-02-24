@@ -1,10 +1,9 @@
 import React, {PropTypes} from 'react';
-import { connect } from 'react-redux';
-import { Table, Button, Icon, Label, Header } from 'semantic-ui-react';
+import { Table, Button, Label } from 'semantic-ui-react';
 
-const SurveyList = ({surveys}) => {
-
+const SurveyList = ({surveys, houses}) => {
   let surveyItems = surveys.map((survey, index) => {
+
     let candidates = survey.candidates.map((candidate, index) => {
       return (
         <Label as="h5" key={index} color={candidate.color}>
@@ -13,6 +12,14 @@ const SurveyList = ({surveys}) => {
         </Label>
       );
     });
+
+    let getHouseName = houseKey => {
+      let house = houses.filter( house => {
+        return house.key === houseKey; // This returns an array of objects
+      });
+
+      if (house[0]) return house[0].name;
+    };
 
     return (
       <Table.Row key={index}>
@@ -24,7 +31,7 @@ const SurveyList = ({surveys}) => {
         </Table.Cell>
         <Table.Cell>{survey.round}</Table.Cell>
         <Table.Cell>{survey.date}</Table.Cell>
-        <Table.Cell>{survey.house}</Table.Cell>
+        <Table.Cell>{getHouseName(survey.house)}</Table.Cell>
         <Table.Cell>{survey.floor}</Table.Cell>
         <Table.Cell>{survey.totalVoters}</Table.Cell>
         <Table.Cell>{candidates}</Table.Cell>
@@ -53,27 +60,14 @@ const SurveyList = ({surveys}) => {
       <Table.Body>
         {surveyItems}
       </Table.Body>
-      <Table.Footer fullWidth>
-        <Table.Row>
-          <Table.HeaderCell />
-          <Table.HeaderCell colSpan='6'>
-            
-          </Table.HeaderCell>
-        </Table.Row>
-      </Table.Footer>
     </Table>
   );
 };
 
 SurveyList.propTypes = {
-  surveys: PropTypes.array.isRequired
-};
-
-const mapStateToProps = (state) => {
-  return {
-    surveys: state.surveys.list.toJS()
-  };
+  surveys: PropTypes.array.isRequired,
+  houses: PropTypes.array.isRequired
 };
 
 
-export default connect(mapStateToProps)(SurveyList);
+export default SurveyList;

@@ -3,14 +3,15 @@ import { connect } from 'react-redux';
 
 import SurveyAdd from 'views/components/survey-add';
 import SurveyList from 'views/components/survey-list';
-import { surveyActions,getVisibleSurveys } from 'core/surveys';
+import { surveyActions ,getVisibleSurveys } from 'core/surveys';
+import { getVisibleHouses } from 'core/houses';
 
 import {Grid, Container, Button, Icon} from 'semantic-ui-react';
 
 
 
 
-const SurveysPage = ({surveys}) => {
+const SurveysPage = ({surveys, houses}) => {
   return (
     <Container fluid>
       <Grid columns={1} centered>
@@ -18,7 +19,7 @@ const SurveysPage = ({surveys}) => {
           <SurveyAdd createSurvey={surveyActions.handleCreateSurvey()} />
         </Grid.Column>
         <Grid.Column>
-          <SurveyList/>
+          <SurveyList surveys={surveys} houses={houses} />
         </Grid.Column>
       </Grid>
     </Container>
@@ -26,12 +27,13 @@ const SurveysPage = ({surveys}) => {
 };
 
 SurveysPage.propTypes = {
-  surveys: PropTypes.object.isRequired
+  surveys: PropTypes.array.isRequired
 };
 
 const mapStateToProps = state => {
   return {
-    surveys: getVisibleSurveys(state)
+    surveys: getVisibleSurveys(state).toJS(),
+    houses: getVisibleHouses(state).toJS()
   };
 };
 

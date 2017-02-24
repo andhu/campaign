@@ -1,8 +1,8 @@
-import React, {PropTypes} from 'react';
+import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import { Menu, Icon, Button } from 'semantic-ui-react';
 
-const SideBarMenu = () => {
+const SideBarMenu = ({signOut}) => {
 
   // TODO: implement a loading progressbar below the menu
   // let loginLogoutLink = auth.isLogged ? <LogoutLink signOut={signOut} /> : <LoginLink />;
@@ -33,8 +33,15 @@ const SideBarMenu = () => {
         <Icon name='setting' />
         Settings
       </Menu.Item>
+      <Menu.Item>
+        <Button negative content="Sign Out" onClick={signOut} />
+      </Menu.Item>
     </div>
   );
+};
+
+SideBarMenu.propTypes = {
+  signOut: PropTypes.func.isRequired
 };
 
 export default SideBarMenu;
