@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
+
 import {Header, Divider, Grid, Container, Card } from 'semantic-ui-react';
 import { Link } from 'react-router';
 import SurveyDone from 'views/components/chart-survey-done';
 import HouseLeft from 'views/components/chart-houses-left';
 
 import SurveyList from 'views/components/survey-list';
+import { getVisibleSurveys } from 'core/surveys';
+import { getVisibleHouses } from 'core/houses';
 
-const HomePage = () => {
+const HomePage = ({surveys, houses}) => {
   return (
     <Container fluid>
       <Grid columns={3} centered>
@@ -60,7 +64,7 @@ const HomePage = () => {
         <Grid.Row only="computer">
           <Grid.Column mobile={14} tablet={14} computer={12}>
             <Divider horizontal>Survey List</Divider>
-            <SurveyList />
+            <SurveyList surveys={surveys} houses={houses} />
           </Grid.Column>
         </Grid.Row>
       </Grid>
@@ -68,4 +72,16 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+HomePage.propTypes = {
+  houses: PropTypes.array.isRequired,
+  surveys: PropTypes.array.isRequired
+};
+
+const mapStateToProps = state => {
+  return {
+    surveys: getVisibleSurveys(state).toJS(),
+    houses: getVisibleHouses(state).toJS()
+  };
+};
+
+export default connect(mapStateToProps)(HomePage);

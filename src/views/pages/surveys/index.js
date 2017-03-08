@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 
 import SurveyAdd from 'views/components/survey-add';
 import SurveyList from 'views/components/survey-list';
-import { surveyActions ,getVisibleSurveys } from 'core/surveys';
+import { surveyActions, getVisibleSurveys } from 'core/surveys';
 import { getVisibleHouses } from 'core/houses';
 
-import {Grid, Container, Button, Icon} from 'semantic-ui-react';
+import {Grid, Container} from 'semantic-ui-react';
 
 
 
@@ -27,6 +27,7 @@ const SurveysPage = ({surveys, houses}) => {
 };
 
 SurveysPage.propTypes = {
+  houses: PropTypes.array.isRequired,
   surveys: PropTypes.array.isRequired
 };
 

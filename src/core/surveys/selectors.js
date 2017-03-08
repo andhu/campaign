@@ -26,4 +26,20 @@ export const getVisibleSurveys = createSelector(
 export const getSurveyCount = createSelector(
   getSurveyList,
   surveyList => surveyList.size
-)
+);
+
+export const getPartyVoteCount = createSelector(
+  getSurveyList,
+  surveylist => {
+    let votes = [];
+    surveylist.forEach((survey) => {
+      survey.candidates.forEach((vote) => {
+        if (votes[vote.party]) votes[vote.party] += parseInt(vote.votes);
+        else {
+          votes[vote.party] = vote.votes;
+        }
+      });
+    });
+    return votes;
+  }
+  );
